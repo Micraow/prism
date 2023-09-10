@@ -2,6 +2,13 @@
 
 ## bing 翻译
 
+使用方法：
+
+translate(str:英文)
+
+返回： 中文结果
+
+
 调用edge的网页翻译API用作我们的翻译后端
 
 1. 从 https://edge.microsoft.com/translate/auth 获取token

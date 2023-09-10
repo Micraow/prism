@@ -8,6 +8,8 @@ Prism 是 南京市金陵中学学生研究性学习项目，本项目的目标�
 
 本项目基于GPL-2.0协议开源，商业使用请先联系我们！
 
+[开发文档](https://gitee.com/micraow/prism/tree/master/docs)
+
 ## 技术方案
 
 *等待沈锦良填写*
