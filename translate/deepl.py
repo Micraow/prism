@@ -10,8 +10,23 @@ def translate(input):
         int(time.time() * 10000)) + '},"id":' + str(
             random.randint(1, 100000000)) + '}'
     r = requests.post('https://www2.deepl.com/jsonrpc',
-                        headers={'content-type': 'application/json'},
+                        headers = {
+        'accept': '*/*',
+        'accept-language': 'zh-TW,zh;q=0.9,ja;q=0.8,zh-CN;q=0.7,en-US;q=0.6,en;q=0.5',
+        'cache-control': 'no-cache',
+        'content-type': 'application/json',
+        'pragma': 'no-cache',
+        'sec-ch-ua': '"Microsoft Edge";v="113", "Chromium";v="113", "Not-A.Brand";v="24"',
+        'sec-ch-ua-mobile': '?0',
+        'sec-ch-ua-platform': '"Windows"',
+        'sec-fetch-dest': 'empty',
+        'sec-fetch-mode': 'cors',
+        'sec-fetch-site': 'cross-site',
+        'Referer': 'https://deepl.com/',
+        'Referrer-Policy': 'strict-origin-when-cross-origin',
+        'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/113.0.0.0 Safari/537.36 Edg/113.0.1774.42',
+    },
                         data=data.encode())
     return r.json()['result']['translations'][0]['beams'][0]['postprocessed_sentence']
 
-# print(translate("hello andy"))
+print(translate("I love prism"))
