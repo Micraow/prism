@@ -92,6 +92,11 @@ def main():
         times += 1
     print(f"times: {times}")
 
+def translate(input):
+    translater = YoudaoTranslater()
+    # return translater.translate(input)
+    return translater.translate(input)['translateResult'][0][0]['tgt']
 
 if __name__ == "__main__":
+    # print(translate("I love prism"))
     main()
