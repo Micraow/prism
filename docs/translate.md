@@ -41,3 +41,24 @@ headers = {
 ```
 [{"translations":[{"text":"你好","to":"zh-Hans"}]}]
 ```
+
+## deepl, 有道翻译
+同bing翻译
+
+使用方法：
+
+translate(str:英文)
+
+返回： 中文结果
+
+**deepl在多次查询后会返回“too many requests”**
+
+## 必应词典
+
+**仅供查词，查句子会报错**
+
+用法:
+
+explain(str:单词)
+
+返回： 释义，带音标

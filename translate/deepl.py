@@ -27,6 +27,9 @@ def translate(input):
         'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/113.0.0.0 Safari/537.36 Edg/113.0.1774.42',
     },
                         data=data.encode())
-    return r.json()['result']['translations'][0]['beams'][0]['postprocessed_sentence']
+    try:
+        return r.json()['result']['translations'][0]['beams'][0]['postprocessed_sentence']
+    except:
+        return "too many requests"
 
-print(translate("I love prism"))
+# print(translate("I love prism"))
