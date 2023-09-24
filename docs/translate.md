@@ -42,7 +42,7 @@ headers = {
 [{"translations":[{"text":"你好","to":"zh-Hans"}]}]
 ```
 
-## deepl, 有道翻译
+## deepl, 有道翻译,本地翻译
 同bing翻译
 
 使用方法：

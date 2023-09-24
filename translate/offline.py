@@ -1,6 +1,7 @@
 import os
 from concurrent.futures import ThreadPoolExecutor, as_completed
 import requests
+from transformers import pipeline, AutoModelForSeq2SeqLM, AutoTokenizer
 
 
 def downlad(path):
@@ -16,7 +17,6 @@ def downlad(path):
 
 
 # 下载方法
-
 
     def range_download(save_name, s_pos, e_pos):
         headers = {"Range": f"bytes={s_pos}-{e_pos}"}
@@ -54,3 +54,15 @@ if os.path.exists(current_work_dir+"/hf_model/pytorch_model.bin") == False:
     # print(current_work_dir)
     print("downloading offline translate model...")
     downlad(current_work_dir+"/hf_model/pytorch_model.bin")
+
+
+def translate(input):
+    model = AutoModelForSeq2SeqLM.from_pretrained(current_work_dir+"/hf_model")
+    local_files_only = True
+    tokenizer = AutoTokenizer.from_pretrained(current_work_dir+"/hf_model")
+    translation = pipeline("translation_en_to_zh",
+                            model=model, tokenizer=tokenizer)
+
+    text = input
+    translated_text = translation(text, max_length=40)[0]['translation_text']
+    return translated_text
