@@ -15,7 +15,7 @@ def translate(input):
 
     Returns:
         str: 翻译结果（中文）
-    """    
+    """
     url = 'https://api-edge.cognitive.microsofttranslator.com/translate?api-version=3.0&from=en&to=zh-Hans'
     headers = {
         'accept': '*/*',
@@ -37,7 +37,6 @@ def translate(input):
     body = [{
         'Text': input}]
     res = requests.post(url, data=json.dumps(body), headers=headers)
-    res=json.loads(res)
-    res=res[0]["translations"][0]["text"]
+    res = json.loads(res)
+    res = res[0]["translations"][0]["text"]
     return res
-

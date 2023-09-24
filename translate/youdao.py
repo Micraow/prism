@@ -27,7 +27,8 @@ class YoudaoTranslater:
         params = {
             "keyid": "webfanyi-key-getter",
         } | self.__base_body("asdjnjfenknafdfsdfsd")
-        res = self.sess.get("https://dict.youdao.com/webtranslate/key", params=params)
+        res = self.sess.get(
+            "https://dict.youdao.com/webtranslate/key", params=params)
         t = res.json()
         self.key = t["data"]["secretKey"]
 
@@ -43,7 +44,8 @@ class YoudaoTranslater:
     def __sign(self, t: str, key: str) -> str:
         return (
             MD5.new(
-                f"client=fanyideskweb&mysticTime={t}&product=webfanyi&key={key}".encode()
+                f"client=fanyideskweb&mysticTime={t}&product=webfanyi&key={key}".encode(
+                )
             )
             .digest()
             .hex()
@@ -63,7 +65,8 @@ class YoudaoTranslater:
         }
 
     def __decode(self, src: str) -> dict:
-        key = b"ydsecret://query/key/B*RGygVywfNBwpmBaZg*WT7SIOUP2T0C9WHMZN39j^DAdaZhAnxvGcCY6VYFwnHl"  # see: https://blog.csdn.net/nick131410/article/details/128877625
+        # see: https://blog.csdn.net/nick131410/article/details/128877625
+        key = b"ydsecret://query/key/B*RGygVywfNBwpmBaZg*WT7SIOUP2T0C9WHMZN39j^DAdaZhAnxvGcCY6VYFwnHl"
         iv = b"ydsecret://query/iv/C@lZe2YzHtZ2CYgaXKSVfsb7Y4QWHjITPPZ0nQp87fBeJ!Iv6v^6fvi2WN@bYpJ4"
         cryptor = AES.new(
             MD5.new(key).digest()[:16], AES.MODE_CBC, MD5.new(iv).digest()[:16]
@@ -92,10 +95,12 @@ def main():
         times += 1
     print(f"times: {times}")
 
+
 def translate(input):
     translater = YoudaoTranslater()
     # return translater.translate(input)
     return translater.translate(input)['translateResult'][0][0]['tgt']
+
 
 if __name__ == "__main__":
     # print(translate("I love prism"))
