@@ -1,5 +1,5 @@
 # coding:utf-8
-
+import os
 import torch
 import torch.utils.data
 from torch.autograd import Variable
@@ -39,7 +39,8 @@ def crnnSource():
         model = crnn.CRNN(32, 1, len(alphabet) + 1, 256, 1).cuda()
     else:
         model = crnn.CRNN(32, 1, len(alphabet) + 1, 256, 1).cpu()
-    path = './crnn/samples/model_acc97.pth'
+    current_work_dir = os.path.dirname(__file__)
+    path = current_work_dir+'/models/model.pth'
     model.eval()
     model.load_state_dict(torch.load(path))
     return model, converter
