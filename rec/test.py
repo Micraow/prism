@@ -32,10 +32,15 @@ def decode(preds, char_set):
 
 
 if __name__ == '__main__':
-
+    # current_work_dir = os.path.dirname(__file__)
+    # char_set = open(current_work_dir+'/data/char.txt',
+    #                 'r', encoding='utf-8').readlines()
+    # char_set = ''.join(['$']+[ch.strip('\n') for ch in char_set[1:]])
+    # pred_text = decode([1,17], char_set)
+    # print(pred_text)
     imagepath = './input.jpg'
 
-    img_h = input("img_h?")
+    img_h = input("img_h?(32)")
     use_gpu = True
     current_work_dir = os.path.dirname(__file__)
     modelpath = current_work_dir+"/model/model.pth"
