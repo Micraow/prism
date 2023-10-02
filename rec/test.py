@@ -2,7 +2,7 @@ import os
 
 import torch
 
-from model import CRNN as crnn
+import model as crnn
 from PIL import Image
 from torchvision import transforms
 
@@ -39,7 +39,7 @@ if __name__ == '__main__':
     use_gpu = False
     current_work_dir = os.path.dirname(__file__)
     modelpath = current_work_dir+"/model/model.pth"
-    char_set = open('./data/char.txt',
+    char_set = open(current_work_dir+'/data/char.txt',
                     'r', encoding='utf-8').readlines()
     char_set = ''.join([ch.strip('\n') for ch in char_set[1:]] + ['卍'])
     n_class = len(char_set)

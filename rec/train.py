@@ -3,7 +3,7 @@ import torch
 import cv2
 from torchvision import transforms
 from torch.utils.data import Dataset, DataLoader
-from model import CRNN as crnn
+import model as crnn
 import time
 
 
@@ -35,7 +35,7 @@ class CRNNDataSet(Dataset):
     def __getitem__(self, index):
         image_path = os.path.join(self.image_root, self.image_name[index])
         keys = self.image_dict.get(self.image_name[index])
-        label = [int(x) for x in keys]
+        label = [int(x) for x in keys]  # TODO 还没搞明白data.txt是怎么表示的
 
         image = cv2.imread(image_path, cv2.IMREAD_GRAYSCALE)
         # if image is None:
@@ -77,15 +77,15 @@ class CRNNDataSet(Dataset):
 
         return dic
 
-
-trainData = CRNNDataSet(imageRoot="./data/images",
-                        labelRoot="./data/labels/data.txt")
+current_work_dir = os.path.dirname(__file__)
+trainData = CRNNDataSet(imageRoot=current_work_dir+"/data/images",
+                        labelRoot=current_work_dir+"/data/labels/data.txt")
 
 trainLoader = DataLoader(
     dataset=trainData, batch_size=30, shuffle=True, num_workers=0)
 
-valData = CRNNDataSet(imageRoot="./data/images",
-                      labelRoot="./data/labels/data.txt")
+valData = CRNNDataSet(imageRoot=current_work_dir+"/data/images",
+                      labelRoot=current_work_dir+"/data/labels/data.txt")
 
 valLoader = DataLoader(dataset=valData, batch_size=1,
                        shuffle=True, num_workers=1)
@@ -99,7 +99,7 @@ def decode(preds):
     return pred
 
 
-def val(model, loss_function, max_iteration, use_gpu=True):
+def val(model, loss_function, max_iteration, use_gpu=False):
     # 将模式切换为验证评估模式
     model.eval()
     k = 0
@@ -137,13 +137,13 @@ def val(model, loss_function, max_iteration, use_gpu=True):
 
 
 def train():
-    use_gpu = True
+    use_gpu = False
     learning_rate = 0.0005
     weight_decay = 1e-4
     max_epoch = 10
     current_work_dir = os.path.dirname(__file__)
     modelpath = current_work_dir+"/model/model.pth"
-    char_set = open('./data/char.txt',
+    char_set = open(current_work_dir+'/data/char.txt',
                     'r', encoding='utf-8').readlines()
     char_set = ''.join([ch.strip('\n') for ch in char_set[1:]] + ['卍'])
     n_class = len(char_set)
