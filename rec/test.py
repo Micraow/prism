@@ -25,6 +25,8 @@ def decode(preds, char_set):
     for i in range(len(preds)):
         if preds[i] != 0 and ((i == 0) or (i != 0 and preds[i] != preds[i-1])):
             pred_text += char_set[int(preds[i])]
+        if preds[i] == 0 and ((i == 0) or (i != 0 and preds[i] != preds[i-1])):
+            pred_text += ' '
 
     return pred_text
 
