@@ -103,7 +103,7 @@ def decode(preds):
     return pred
 
 
-def val(model, loss_function, max_iteration, use_gpu=False):
+def val(model, loss_function, max_iteration, use_gpu=True):
     # 将模式切换为验证评估模式
     model.eval()
     k = 0
@@ -141,7 +141,7 @@ def val(model, loss_function, max_iteration, use_gpu=False):
 
 
 def train():
-    use_gpu = False
+    use_gpu = True
     learning_rate = 0.0005
     weight_decay = 1e-4
     max_epoch = 10

@@ -36,7 +36,7 @@ if __name__ == '__main__':
     imagepath = './input.jpg'
 
     img_h = input("img_h?")
-    use_gpu = False
+    use_gpu = True
     current_work_dir = os.path.dirname(__file__)
     modelpath = current_work_dir+"/model/model.pth"
     char_set = open(current_work_dir+'/data/char.txt',
