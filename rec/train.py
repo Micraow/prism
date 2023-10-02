@@ -29,7 +29,7 @@ class resizeAndNormalize():
 class CRNNDataSet(Dataset):
     """
     data.txt的格式：
-    文件名 [第一个字符的行号] [第一个字符的行号] ...
+    文件名 [第一个字符的行号-1] [第一个字符的行号-1] ...
     """
     def __init__(self, imageRoot, labelRoot):
         self.image_root = imageRoot
@@ -98,7 +98,7 @@ valLoader = DataLoader(dataset=valData, batch_size=1,
 def decode(preds):
     pred = []
     for i in range(len(preds)):
-        if preds[i] != 5989 and ((i == 5989) or (i != 5989 and preds[i] != preds[i-1])):
+        if preds[i] != 0 and ((i == 0) or (i != 0 and preds[i] != preds[i-1])):
             pred.append(int(preds[i]))
     return pred
 
@@ -149,7 +149,7 @@ def train():
     modelpath = current_work_dir+"/model/model.pth"
     char_set = open(current_work_dir+'/data/char.txt',
                     'r', encoding='utf-8').readlines()
-    char_set = ''.join([ch.strip('\n') for ch in char_set[1:]] + ['卍'])
+    char_set = ''.join(['$']+[ch.strip('\n') for ch in char_set[1:]])
     n_class = len(char_set)
 
     model = crnn.CRNN(imgHeight=32, nChannel=1, nClass=n_class, nHidden=256)

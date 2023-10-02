@@ -23,8 +23,8 @@ class resizeNormalize(object):
 def decode(preds, char_set):
     pred_text = ''
     for i in range(len(preds)):
-        if preds[i] != 5989 and ((i == 5989) or (i != 5989 and preds[i] != preds[i-1])):
-            pred_text += char_set[int(preds[i])-1]
+        if preds[i] != 0 and ((i == 0) or (i != 0 and preds[i] != preds[i-1])):
+            pred_text += char_set[int(preds[i])]
 
     return pred_text
 
@@ -41,7 +41,7 @@ if __name__ == '__main__':
     modelpath = current_work_dir+"/model/model.pth"
     char_set = open(current_work_dir+'/data/char.txt',
                     'r', encoding='utf-8').readlines()
-    char_set = ''.join([ch.strip('\n') for ch in char_set[1:]] + ['卍'])
+    char_set = ''.join(['$']+[ch.strip('\n') for ch in char_set[1:]])
     n_class = len(char_set)
     print(n_class)
 
