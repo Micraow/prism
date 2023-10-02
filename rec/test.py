@@ -2,7 +2,7 @@ import os
 
 import torch
 
-from model import crnn
+from model import CRNN as crnn
 from PIL import Image
 from torchvision import transforms
 

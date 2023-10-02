@@ -3,7 +3,7 @@ import torch
 import cv2
 from torchvision import transforms
 from torch.utils.data import Dataset, DataLoader
-from model import crnn
+from model import CRNN as crnn
 import time
 
 
@@ -79,13 +79,13 @@ class CRNNDataSet(Dataset):
 
 
 trainData = CRNNDataSet(imageRoot="./data/images",
-                        labelRoot="./data/lables/data.txt")
+                        labelRoot="./data/labels/data.txt")
 
 trainLoader = DataLoader(
     dataset=trainData, batch_size=30, shuffle=True, num_workers=0)
 
 valData = CRNNDataSet(imageRoot="./data/images",
-                      labelRoot="./data/lables/data.txt")
+                      labelRoot="./data/labels/data.txt")
 
 valLoader = DataLoader(dataset=valData, batch_size=1,
                        shuffle=True, num_workers=1)
