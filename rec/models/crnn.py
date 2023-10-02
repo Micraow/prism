@@ -1,5 +1,3 @@
-import sys
-sys.path.insert(1, "./crnn")
 import torch.nn as nn
 import utils
 
@@ -31,6 +29,7 @@ class CRNN(nn.Module):
         self.ngpu = ngpu
         assert imgH % 16 == 0, 'imgH has to be a multiple of 16'
 
+        # 参数
         ks = [3, 3, 3, 3, 3, 3, 2]
         ps = [1, 1, 1, 1, 1, 1, 0]
         ss = [1, 1, 1, 1, 1, 1, 1]
