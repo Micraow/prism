@@ -27,6 +27,10 @@ class resizeAndNormalize():
 
 
 class CRNNDataSet(Dataset):
+    """
+    data.txt的格式：
+    文件名 [第一个字符的行号] [第一个字符的行号] ...
+    """
     def __init__(self, imageRoot, labelRoot):
         self.image_root = imageRoot
         self.image_dict = self.readfile(labelRoot)

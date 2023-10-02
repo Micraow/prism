@@ -137,3 +137,5 @@ dmypy.json
 # Cython debug symbols
 cython_debug/
 translate/hf_model/pytorch_model.bin
+rec/data/images
+rec/model/model.pth
