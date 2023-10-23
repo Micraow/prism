@@ -1,0 +1,1 @@
+使用pyqt6开发。QSS使用PyDracula
