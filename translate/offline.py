@@ -18,6 +18,7 @@ def downlad(path):
 
 # 下载方法
 
+
     def range_download(save_name, s_pos, e_pos):
         headers = {"Range": f"bytes={s_pos}-{e_pos}"}
         res = requests.get(url, headers=headers, stream=True)
@@ -61,7 +62,7 @@ def translate(input):
     local_files_only = True
     tokenizer = AutoTokenizer.from_pretrained(current_work_dir+"/hf_model")
     translation = pipeline("translation_en_to_zh",
-                            model=model, tokenizer=tokenizer)
+                           model=model, tokenizer=tokenizer)
 
     text = input
     translated_text = translation(text, max_length=40)[0]['translation_text']
