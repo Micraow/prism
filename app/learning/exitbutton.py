@@ -1,6 +1,6 @@
 
 # import sys
-# from PyQt6.QtWidgets import QWidget, QPushButton, QApplication
+# from PySide6.QtWidgets import QWidget, QPushButton, QApplication
 
 # class Example(QWidget):
 
@@ -33,8 +33,8 @@
 #     main()
 import sys
 import typing
-from PyQt6 import QtGui
-from PyQt6.QtWidgets import QWidget, QPushButton, QApplication, QMessageBox
+from PySide6 import QtGui
+from PySide6.QtWidgets import QWidget, QPushButton, QApplication, QMessageBox
 
 
 class Window(QWidget):

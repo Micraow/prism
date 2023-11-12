@@ -1,1 +1,1 @@
-使用pyqt6开发。QSS使用PyOnedrak
+使用PySide6开发。QSS使用PyOnedrak
