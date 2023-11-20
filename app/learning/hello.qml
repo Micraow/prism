@@ -1,13 +1,19 @@
-import QtQuick
+import QtQuick 2.13
 
-Rectangle {
+Window {
     id: main
-    width: 900
+    width: 90
     height: 100
-    color: "pink"
+    color: "black"
+    visible: true
+    title: "hello"
     Text {
         text: "hi,world"
-
-        anchors.centerIn: main
+        color: "white"
+        anchors.top:parent.top
+        anchors.topMargin:25
+        
+        anchors.horizontalCenter: parent.horizontalCenter
+        
     }
 }
