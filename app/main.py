@@ -3,7 +3,7 @@ from PySide6.QtQml import QQmlApplicationEngine
 from PySide6.QtCore import QUrl
 from PySide6.QtGui import QGuiApplication
 import sys
-qml_file = Path(__file__).parent/"main.qml"
+qml_file = Path(__file__).parent/"QML/main.qml"
 app = QGuiApplication(sys.argv)
 view = QQmlApplicationEngine()
 
