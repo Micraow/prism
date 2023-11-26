@@ -15,7 +15,7 @@ def rec(path):
     """
     # img_path = './imgs/test.jpg'
     img_path = path
-    result = ocr.ocr(img_path, cls=False,det=False)
+    result = ocr.ocr(img_path, cls=False, det=False)
     rec_res = []
     for idx in range(len(result)):
         res = result[idx]

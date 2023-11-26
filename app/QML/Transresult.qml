@@ -1,8 +1,8 @@
 import QtQuick 2.13
 import QtQuick.Controls 2.15
 
-Page{
-    Label{
+Page {
+    Label {
         id: titlelabel
         text: qsTr("翻译结果")
         anchors.top: parent.top
