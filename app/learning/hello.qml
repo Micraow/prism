@@ -13,7 +13,7 @@ Window {
         anchors.top:parent.top
         anchors.topMargin:25
         
-        anchors.horizontalCenter: parent.horizontalCenter
+        horizontalAlignment: Text.AlignHCenter
         
     }
 }

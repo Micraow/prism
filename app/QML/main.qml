@@ -16,9 +16,9 @@ Window {
     SwipeView {
         id: swipeView
         anchors.fill: parent
-        //插入子页面
-        Internet{
+        Welcome{
         }
+        //插入子页面
         Huaci {
         }
         Paizhao {
