@@ -33,3 +33,6 @@ def translate(input):
         return "too many requests"
 
 # print(translate("I love prism"))
+
+def getName():
+    return "deepl"

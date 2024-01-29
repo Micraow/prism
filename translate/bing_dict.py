@@ -10,5 +10,9 @@ def explain(input):
     return res[0]
 
 
+def getName():
+    return "bing词典"
+
+
 if __name__ == "__main__":
     print(explain("prism"))

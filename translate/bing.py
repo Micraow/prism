@@ -40,3 +40,6 @@ def translate(input):
     res = json.loads(res)
     res = res[0]["translations"][0]["text"]
     return res
+
+def getName():
+    return "bing"

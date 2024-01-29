@@ -105,3 +105,6 @@ def translate(input):
 if __name__ == "__main__":
     # print(translate("I love prism"))
     main()
+
+def getName():
+    return "有道翻译"

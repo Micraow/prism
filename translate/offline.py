@@ -48,16 +48,14 @@ def downlad(path):
     return downlad()
 
 
-current_work_dir = os.path.dirname(__file__)
-if os.path.exists(current_work_dir+"/hf_model/pytorch_model.bin") == False:
+def translate(input):
+    current_work_dir = os.path.dirname(__file__)
+    if os.path.exists(current_work_dir+"/hf_model/pytorch_model.bin") == False:
     # print(os.path.exists(current_work_dir+"/hf_model/pytorch_model.bin"))
 
     # print(current_work_dir)
-    print("downloading offline translate model...")
-    downlad(current_work_dir+"/hf_model/pytorch_model.bin")
-
-
-def translate(input):
+        print("downloading offline translate model...")
+        downlad(current_work_dir+"/hf_model/pytorch_model.bin")
     model = AutoModelForSeq2SeqLM.from_pretrained(current_work_dir+"/hf_model")
     local_files_only = True
     tokenizer = AutoTokenizer.from_pretrained(current_work_dir+"/hf_model")
@@ -67,3 +65,6 @@ def translate(input):
     text = input
     translated_text = translation(text, max_length=40)[0]['translation_text']
     return translated_text
+
+def getName():
+    return "离线翻译"
