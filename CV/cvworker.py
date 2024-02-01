@@ -9,7 +9,7 @@ class cv():
             os.mkdir("/tmp/prism")
         self.cap = cv2.VideoCapture(0)  # 参数为0时调用本地摄像头；参数为1时调用外接摄像头
         self.index = 0
-        self.stitcher = cv2.Stitcher.create(cv2.Stitcher_SCANS)
+        self.stitcher = cv2.Stitcher.create(cv2.Stitcher_PANORAMA)
         # print("初始化的工作（如果有）")
 
     def takePic(self):
@@ -33,7 +33,7 @@ class cv():
         for image_path in images_paths:
             img = cv2.imread(image_path)
             imgs.append(img)
-        (ret, pano) = cv2.stitcher.stitch(imgs)
+        (ret, pano) = self.stitcher.stitch(imgs)
         path="/tmp/prism/"+str(self.index)+".jpg"
         cv2.imwrite(path, pano)
         self.index = self.index+1
