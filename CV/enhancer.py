@@ -186,7 +186,10 @@ def image_transform(image, approx_array, ratio):
     # ret, thresh = cv2.threshold(warped_gray, 190, 255, cv2.THRESH_BINARY)
 
     # 自适应阈值
-    thresh = cv2.adaptiveThreshold(warped_gray,255, cv2.ADAPTIVE_THRESH_MEAN_C, cv2.THRESH_BINARY, 15, 5)
+    # thresh = cv2.adaptiveThreshold(warped_gray,255, cv2.ADAPTIVE_THRESH_MEAN_C, cv2.THRESH_BINARY, 13, 4)
+
+    thresh = cv2.adaptiveThreshold(warped_gray ,255, cv2.ADAPTIVE_THRESH_MEAN_C, cv2.THRESH_BINARY, 17, 13)
+
     return thresh
 
 
