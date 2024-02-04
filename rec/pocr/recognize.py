@@ -1,4 +1,8 @@
 from paddleocr import PaddleOCR
+
+# 必须用whl版，否则包名不对
+# pip install paddlepaddle -i https://mirror.baidu.com/pypi/simple
+# pip install "paddleocr>=2.0.1"
 # Paddleocr目前支持的多语言语种可以通过修改lang参数进行切换
 # 例如`ch`, `en`, `fr`, `german`, `korean`, `japan`
 # need to run only once to download and load model into memory

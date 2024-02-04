@@ -1,17 +1,17 @@
-from rec.paddleocr import recognize
-from CV import cvworker
 from PySide6.QtCore import QObject, Signal, Slot
 import sys
-from translate import bing_dict, bing, deepl, offline, youdao
 import network
 from time import sleep
 sys.path.append("./CV")
 sys.path.append("./rec")
-
+sys.path.append("./translate")
+import cvworker
+import pocr.recognize as recognize
+import bing_dict, bing, deepl, offline, youdao
 
 class translator(QObject):
     def __init__(self):
-        super().__init__(self)
+        QObject.__init__(self)
         self.worker = cvworker.cv()
         self.img2txt = recognize.img2txt()
         self.photoFlag = False
@@ -44,6 +44,7 @@ class translator(QObject):
 
         return result
 
+    @Slot()
     def photoTranslate(self):
         path = self.worker.takePic()
         res = self.img2txt.rec(path)
