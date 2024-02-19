@@ -29,6 +29,7 @@ Page {
         anchors.leftMargin: 185
         onClicked: {
             scanning.visible = true;
+            Translator.liveTranslate();
         }
     }
 
@@ -47,6 +48,7 @@ Page {
             bu2.visible = false;
             prompt.visible = false;
             back.visible = true;
+            Translator.endLive();
         }
     }
 
@@ -64,20 +66,27 @@ Page {
         visible: false
     }
 
-    Button{
+    Button {
         id: back
-        text:"返回"
+        text: "返回"
         visible: false
-        anchors.right:parent.right
-        anchors.top:parent.top
+        anchors.right: parent.right
+        anchors.top: parent.top
         anchors.margins: 15
-        onClicked:{
+        onClicked: {
             translateresult.visible = false;
             titlelabel.visible = true;
             bu1.visible = true;
             bu2.visible = true;
             prompt.visible = true;
             back.visible = false;
+        }
+    }
+
+    Connections {
+        target: translator
+        function onLive(results) {
+            translateresult.resultlabel.text = results;
         }
     }
 }

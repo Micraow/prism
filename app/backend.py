@@ -1,13 +1,19 @@
+import youdao
+import offline
+import deepl
+import bing
+import bing_dict
+import pocr.recognize as recognize
+import cvworker
 from PySide6.QtCore import QObject, Signal, Slot
 import sys
 import network
+from threading import Thread
 from time import sleep
 sys.path.append("./CV")
 sys.path.append("./rec")
 sys.path.append("./translate")
-import cvworker
-import pocr.recognize as recognize
-import bing_dict, bing, deepl, offline, youdao
+
 
 class translator(QObject):
     def __init__(self):
@@ -15,6 +21,11 @@ class translator(QObject):
         self.worker = cvworker.cv()
         self.img2txt = recognize.img2txt()
         self.photoFlag = False
+
+    pic = Signal(str)
+    live = Signal(str)
+    cuoti = Signal(str)
+    # result = Signal(str, arguments=['provider', 'result'])
 
     def txt2txt(self, content: str):
         """调用translate的接口,实现英译中
@@ -49,9 +60,15 @@ class translator(QObject):
         path = self.worker.takePic()
         res = self.img2txt.rec(path)
         string = "".join(res)
-        return self.txt2txt(string)
+        results = str(self.txt2txt(string))
+        self.pic.emit(results)
 
+    @Slot()
     def liveTranslate(self):
+        back = Thread(self._liveTranslate)
+        back.run()
+
+    def _liveTranslate(self):
         # self.worker.startCapture(100) # 100ms一张
         images_path = []
         while self.photoFlag:
@@ -61,4 +78,16 @@ class translator(QObject):
         path = self.worker.stitch(images_path)
         res = self.img2txt.rec(path)
         string = "".join(res)
-        return self.txt2txt(string)
+        self.live.emit(str(self.txt2txt(string)))
+
+    @Slot()
+    def endLive(self):
+        self.photoFlag = False
+
+    @Slot()
+    def enhancer(self):
+        try:
+            self.worker.enhance(self.worker.takePic())
+            self.cuoti.emit("成功")
+        except:
+            self.cuoti.emit("失败")

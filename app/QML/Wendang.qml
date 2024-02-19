@@ -17,5 +17,12 @@ Page {
         font.pixelSize: Qt.application.font.pixelSize * 2
         anchors.horizontalCenter: parent.horizontalCenter
     }
-    
+    Label{
+        text: qsTr("开发中")
+        horizontalAlignment: Text.AlignHCenter
+        anchors.top:titlelabel.bottom
+        anchors.topMargin:60
+        font.pixelSize: Qt.application.font.pixelSize * 2
+        anchors.horizontalCenter: parent.horizontalCenter
+    }
 }

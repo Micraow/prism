@@ -10,4 +10,12 @@ Page {
         horizontalAlignment: Text.AlignHCenter
         padding: 10
     }
+    Label {
+        id: resultlabel
+        text: qsTr("请耐心等待")
+        anchors.top: titlelabel.bottom
+        font.pixelSize: Qt.application.font.pixelSize * 3
+        horizontalAlignment: Text.AlignHCenter
+        padding: 10
+    }
 }

@@ -1,5 +1,6 @@
 import QtQuick 2.13
 import QtQuick.Controls 2.15
+import Translator
 Window {
     id: root
     visible: true
@@ -13,6 +14,10 @@ Window {
 //         clip:true  // 超出边界的进行裁剪，即不显示，默认为false
 //         boundsBehavior: Flickable.StopAtBounds  // 滑动不超出父框的大小
 //     }
+    translator{
+        id: translator
+    }
+
     SwipeView {
         id: swipeView
         anchors.fill: parent
@@ -22,10 +27,6 @@ Window {
         Huaci {
         }
         Paizhao {
-        }
-        Wendang {
-        } 
-        Banshu{
         }
         Cuoti{
         }
