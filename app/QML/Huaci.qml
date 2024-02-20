@@ -29,7 +29,7 @@ Page {
         anchors.leftMargin: 185
         onClicked: {
             scanning.visible = true;
-            Translator.liveTranslate();
+            translator.liveTranslate();
         }
     }
 
@@ -48,7 +48,7 @@ Page {
             bu2.visible = false;
             prompt.visible = false;
             back.visible = true;
-            Translator.endLive();
+            translator.endLive();
         }
     }
 

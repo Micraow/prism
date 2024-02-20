@@ -7,8 +7,8 @@ import backend
 qml_file = Path(__file__).parent/"QML/main.qml"
 app = QGuiApplication(sys.argv)
 view = QQmlApplicationEngine()
-translator=backend.translator()
-qmlRegisterType(translator,'Translator',1,0,'translator')
+# translator=backend.translator()
+qmlRegisterType(backend.Translator,'Translator',1,0,'Translator')
 
 view.load(QUrl.fromLocalFile(qml_file.resolve()))
 sys.exit(app.exec())

@@ -14,7 +14,7 @@ Window {
 //         clip:true  // 超出边界的进行裁剪，即不显示，默认为false
 //         boundsBehavior: Flickable.StopAtBounds  // 滑动不超出父框的大小
 //     }
-    translator{
+    Translator{
         id: translator
     }
 

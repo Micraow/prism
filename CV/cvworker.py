@@ -16,7 +16,7 @@ class cv():
         ret, frame = self.cap.read()  # ret(bool)有无读取到图片
         cv2.imwrite("/tmp/prism/"+str(self.index)+".jpg", frame)
         path = "/tmp/prism/"+str(self.index)+".jpg"
-        index = index + 1
+        self.index = self.index + 1
         return path
 
     # def startCapture(self, wait_time):

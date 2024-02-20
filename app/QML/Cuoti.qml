@@ -36,6 +36,8 @@ Page {
         id: result
         text: qsTr("等待事情发生")
         anchors.bottom: parent.bottom
+        font.pixelSize: Qt.application.font.pixelSize * 2
+        anchors.horizontalCenter: parent.horizontalCenter
         horizontalAlignment: Text.AlignHCenter
         anchors.bottomMargin: 10
     }

@@ -19,7 +19,7 @@ from time import sleep
 
 
 
-class translator(QObject):
+class Translator(QObject):
     def __init__(self):
         QObject.__init__(self)
         self.worker = cvworker.cv()
