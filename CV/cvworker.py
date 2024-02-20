@@ -58,3 +58,9 @@ class cv():
                 self.clean(f_path)
             else:
                 os.remove(f_path)
+
+    def save(self,img):
+        path="/tmp/prism/"+str(self.index)+".jpg"
+        cv2.imwrite(path, img)
+        self.index = self.index+1
+        return path

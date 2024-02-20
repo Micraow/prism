@@ -46,8 +46,11 @@ class Translator(QObject):
         if network.getNetworkstatus() == True:
             if content.isalpha() != True:
                 for backend in [bing, deepl, youdao, offline]:
-                    res = backend.translate(content)
-                    result[backend.getName()] = res
+                    try:
+                        res = backend.translate(content)
+                        result[backend.getName()] = res
+                    except:
+                        result[backend.getName()] = "无结果"
             else:
                 backend = bing_dict
                 res = backend.explain(content)
@@ -79,10 +82,13 @@ class Translator(QObject):
             path = self.worker.takePic()
             images_path.append(path)
             sleep(0.1)  # 单位是秒
-        path = self.worker.stitch(images_path)
-        res = self.img2txt.rec(path)
-        string = "".join(res)
-        self.live.emit(str(self.txt2txt(string)))
+        try:
+            path = self.worker.stitch(images_path)
+            res = self.img2txt.rec(path)
+            string = "".join(res)
+            self.live.emit(str(self.txt2txt(string)))
+        except:
+            self.live.emit("无结果")
 
     @Slot()
     def endLive(self):
@@ -91,7 +97,7 @@ class Translator(QObject):
     @Slot()
     def enhancer(self):
         try:
-            self.worker.enhance(self.worker.takePic())
+            self.worker.save(self.worker.enhance(self.worker.takePic()))
             self.cuoti.emit("成功")
         except:
             self.cuoti.emit("失败")
