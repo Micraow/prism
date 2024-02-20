@@ -30,6 +30,13 @@ class Translator(QObject):
     cuoti = Signal(str)
     # result = Signal(str, arguments=['provider', 'result'])
 
+    def call_backend(self, content, provider, results):
+        try:
+            res = provider.translate(content)
+            results[provider.getName()] = res
+        except:
+            results[provider.getName()] = "无结果"
+
     def txt2txt(self, content: str):
         """调用translate的接口,实现英译中
 
@@ -45,11 +52,9 @@ class Translator(QObject):
         if network.getNetworkstatus() == True:
             if content.isalpha() != True:
                 for backend in [bing, deepl, youdao, offline]:
-                    try:
-                        res = backend.translate(content)
-                        result[backend.getName()] = res
-                    except:
-                        result[backend.getName()] = "无结果"
+                    t = Thread(target=self.call_backend,
+                               args=(content, backend, result))
+                    t.run()
             else:
                 backend = bing_dict
                 res = backend.explain(content)
@@ -61,12 +66,18 @@ class Translator(QObject):
 
         return result
 
+    def result_parser(self, raw_result):
+        result = ""
+        for k, v in raw_result:
+            result.join([k, ":", v, "\n"])
+        return result
+
     @Slot()
     def photoTranslate(self):
         path = self.worker.takePic()
         res = self.img2txt.rec(path)
         string = "".join(res)
-        results = str(self.txt2txt(string))
+        results = self.result_parser(self.txt2txt(string))
         self.pic.emit(results)
 
     @Slot()
@@ -85,7 +96,7 @@ class Translator(QObject):
             path = self.worker.stitch(images_path)
             res = self.img2txt.rec(path)
             string = "".join(res)
-            self.live.emit(str(self.txt2txt(string)))
+            self.live.emit(self.result_parser(self.txt2txt(string)))
         except:
             self.live.emit("无结果")
 
