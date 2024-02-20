@@ -17,6 +17,8 @@ class cv():
         cv2.imwrite("/tmp/prism/"+str(self.index)+".jpg", frame)
         path = "/tmp/prism/"+str(self.index)+".jpg"
         self.index = self.index + 1
+        self.cap.release()
+        self.cap = cv2.VideoCapture(0)
         return path
 
     # def startCapture(self, wait_time):
@@ -60,7 +62,7 @@ class cv():
                 os.remove(f_path)
 
     def save(self,img):
-        path="/tmp/prism/"+str(self.index)+".jpg"
+        path="/home/prism/"+str(self.index)+".jpg"
         cv2.imwrite(path, img)
         self.index = self.index+1
         return path

@@ -35,7 +35,6 @@ Page {
         id: result
         anchors.top: startbutton.bottom
         anchors.topMargin: 50
-        font.pixelSize: Qt.application.font.pixelSize * 2
         anchors.horizontalCenter: parent.horizontalCenter
         text: "请先拍照"
     }
