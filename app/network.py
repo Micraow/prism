@@ -1,5 +1,6 @@
 import requests
 
+
 def getNetworkstatus():
     '''
     是否联网

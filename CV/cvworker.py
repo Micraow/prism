@@ -3,6 +3,8 @@
 import cv2
 import os
 import enhancer
+
+
 class cv():
     def __init__(self):
         if os.path.exists("/tmp/prism") != True:
@@ -36,7 +38,7 @@ class cv():
             img = cv2.imread(image_path)
             imgs.append(img)
         (ret, pano) = self.stitcher.stitch(imgs)
-        path="/tmp/prism/"+str(self.index)+".jpg"
+        path = "/tmp/prism/"+str(self.index)+".jpg"
         cv2.imwrite(path, pano)
         self.index = self.index+1
         return path
@@ -44,8 +46,8 @@ class cv():
     def enhance(self, image_path):
         # 传入全景拼接后或保存的版书/错题图片，返回增强（类似扫描全能王）后的图片路径(灰度图片)
         # 参考：https://www.cnblogs.com/skyfsm/p/7324346.html
-        res=enhancer.enhance(image_path)
-        path="/tmp/prism/"+str(self.index)+".jpg"
+        res = enhancer.enhance(image_path)
+        path = "/tmp/prism/"+str(self.index)+".jpg"
         cv2.imwrite(path, res)
         self.index = self.index+1
         return path
@@ -61,8 +63,8 @@ class cv():
             else:
                 os.remove(f_path)
 
-    def save(self,img):
-        path="/home/prism/"+str(self.index)+".jpg"
+    def save(self, img):
+        path = "/home/prism/"+str(self.index)+".jpg"
         cv2.imwrite(path, img)
         self.index = self.index+1
         return path

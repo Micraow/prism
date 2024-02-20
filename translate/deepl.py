@@ -34,5 +34,6 @@ def translate(input):
 
 # print(translate("I love prism"))
 
+
 def getName():
     return "deepl"

@@ -167,6 +167,7 @@ def image_calculate_contours(image_resize, edge):
 
     return approx_array
 
+
 def image_transform(image, approx_array, ratio):
     """
     图片转换
@@ -188,7 +189,8 @@ def image_transform(image, approx_array, ratio):
     # 自适应阈值
     # thresh = cv2.adaptiveThreshold(warped_gray,255, cv2.ADAPTIVE_THRESH_MEAN_C, cv2.THRESH_BINARY, 13, 4)
 
-    thresh = cv2.adaptiveThreshold(warped_gray ,255, cv2.ADAPTIVE_THRESH_MEAN_C, cv2.THRESH_BINARY, 17, 13)
+    thresh = cv2.adaptiveThreshold(
+        warped_gray, 255, cv2.ADAPTIVE_THRESH_MEAN_C, cv2.THRESH_BINARY, 17, 13)
 
     return thresh
 

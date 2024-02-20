@@ -18,7 +18,6 @@ def downlad(path):
 
 # 下载方法
 
-
     def range_download(save_name, s_pos, e_pos):
         headers = {"Range": f"bytes={s_pos}-{e_pos}"}
         res = requests.get(url, headers=headers, stream=True)
@@ -51,9 +50,9 @@ def downlad(path):
 def translate(input):
     current_work_dir = os.path.dirname(__file__)
     if os.path.exists(current_work_dir+"/hf_model/pytorch_model.bin") == False:
-    # print(os.path.exists(current_work_dir+"/hf_model/pytorch_model.bin"))
+        # print(os.path.exists(current_work_dir+"/hf_model/pytorch_model.bin"))
 
-    # print(current_work_dir)
+        # print(current_work_dir)
         print("downloading offline translate model...")
         downlad(current_work_dir+"/hf_model/pytorch_model.bin")
     model = AutoModelForSeq2SeqLM.from_pretrained(current_work_dir+"/hf_model")
@@ -65,6 +64,7 @@ def translate(input):
     text = input
     translated_text = translation(text, max_length=40)[0]['translation_text']
     return translated_text
+
 
 def getName():
     return "离线翻译"

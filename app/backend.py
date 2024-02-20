@@ -1,3 +1,14 @@
+from time import sleep
+from threading import Thread
+import network
+from PySide6.QtCore import QObject, Signal, Slot
+import cvworker
+import pocr.recognize as recognize
+import bing_dict
+import bing
+import deepl
+import offline
+import youdao
 import sys
 import os
 current_file_dir = os.path.dirname(__file__)
@@ -5,18 +16,6 @@ root = os.path.abspath(os.path.join(current_file_dir, ".."))
 sys.path.append(root+"/CV")
 sys.path.append(root+"/rec")
 sys.path.append(root+"/translate")
-import youdao
-import offline
-import deepl
-import bing
-import bing_dict
-import pocr.recognize as recognize
-import cvworker
-from PySide6.QtCore import QObject, Signal, Slot
-import network
-from threading import Thread
-from time import sleep
-
 
 
 class Translator(QObject):
