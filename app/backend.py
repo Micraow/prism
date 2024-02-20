@@ -69,7 +69,7 @@ class Translator(QObject):
 
     @Slot()
     def liveTranslate(self):
-        back = Thread(self._liveTranslate)
+        back = Thread(target=self._liveTranslate)
         back.run()
 
     def _liveTranslate(self):

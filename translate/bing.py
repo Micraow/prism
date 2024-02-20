@@ -37,7 +37,7 @@ def translate(input):
     body = [{
         'Text': input}]
     res = requests.post(url, data=json.dumps(body), headers=headers)
-    res = json.loads(res)
+    res = json.loads(res.text)
     res = res[0]["translations"][0]["text"]
     return res
 
