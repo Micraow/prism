@@ -1,3 +1,13 @@
+import sys
+import os
+current_file_dir = os.path.dirname(__file__)
+root = os.path.abspath(os.path.join(current_file_dir, ".."))
+sys.path.append(root+"/CV")
+sys.path.append(root+"/rec")
+sys.path.append(root+"/translate")
+
+# code above should only be placed here, otherwise import fails
+
 from time import sleep
 from threading import Thread
 import network
@@ -9,13 +19,8 @@ import bing
 import deepl
 import offline
 import youdao
-import sys
-import os
-current_file_dir = os.path.dirname(__file__)
-root = os.path.abspath(os.path.join(current_file_dir, ".."))
-sys.path.append(root+"/CV")
-sys.path.append(root+"/rec")
-sys.path.append(root+"/translate")
+
+
 
 
 class Translator(QObject):
