@@ -123,3 +123,58 @@ e.错题保存
 **其它基础知识**
 
     1.Markdown（用于写文档）2.git（版本控制）
+
+## 使用方法
+
+### linux
+linux用户初次使用请运行：
+
+```bash
+git clone https://gitee.com/micraow/prism.git
+cd prism
+chmod +x install.sh
+sudo bash install.sh
+python app/main.py
+```
+此后：
+
+```bash
+cd prism
+source ./env/bin/activate
+python app/main.py
+```
+
+### Windows用户：
+
+首先，开机，然后联网
+
+1. 下载git
+2. 打开git shell
+3. 输入： git clone https://gitee.com/micraow/prism.git
+4. 回车（嘲讽某些不回车的）
+5. 打开浏览器，输入https://www.python.org/downloads/windows/
+6. 找到最新的安装包下载（不知道选哪种架构就选64-bit）
+7. 安装刚刚下载的包，注意添加PATH变量
+8. 下载https://bootstrap.pypa.io/get-pip.py到一个文件夹
+9. 在那个文件夹打开git shell（按住shift然后右键就能看到了）
+10. 输入python get-pip.py并回车
+11. 在prism文件夹下打开git shell
+12. python -m venv env
+13. source ./env/bin/activate
+14. 不想写了，自己打开install.sh看看，运行从`pip config set global.index-url https://mirrors.cloud.tencent.com/pypi/simple`到`pip install -r requirements.txt`间的命令
+15. 打开浏览器，输入https://alist.pengs.top/d/64816595359b1e5db47f442f901a98ce4efd8481/alist/models/Helsinki-NLP/opus-mt-en-zh/pytorch_model.bin 把它下载下来
+16. 确保文件名为pytorch_model.bin
+17. 把该文件移动到translate/hf_model/下
+18. 在项目根目录的git shell里运行python app/main.py
+
+以后运行：
+
+<你如果能做到这一步，则你已经有了一定的shell使用经验，参照上方linux的命令即可>
+
+### 更新程序：
+
+```bash
+git pull
+```
+
+再也不想给windows用户写文档了...
