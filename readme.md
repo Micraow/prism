@@ -1,4 +1,4 @@
-## Prism
+<h1 align="center">Prism  👋</h1>
 
 ![GitHub language count](https://img.shields.io/github/languages/count/micraow/prism?style=for-the-badge)
 ![GitHub top language](https://img.shields.io/github/languages/top/micraow/prism?style=for-the-badge&logo=python)
