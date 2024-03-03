@@ -1,5 +1,22 @@
 ## Prism
 
+![GitHub language count](https://img.shields.io/github/languages/count/micraow/prism?style=for-the-badge)
+![GitHub top language](https://img.shields.io/github/languages/top/micraow/prism?style=for-the-badge&logo=python)
+![GitHub License](https://img.shields.io/github/license/micraow/prism?style=for-the-badge&logo=gnu&logoColor=gnu)
+![GitHub repo size](https://img.shields.io/github/repo-size/micraow/prism?style=for-the-badge&logo=gnubash&logoColor=%23000000&labelColor=%234EAA25&color=%23008DE4)
+![GitHub forks](https://img.shields.io/github/forks/micraow/prism?style=for-the-badge&logo=github)
+![GitHub Repo stars](https://img.shields.io/github/stars/micraow/prism?style=for-the-badge&logo=github)
+
+![linux](https://img.shields.io/badge/linux-%23FCC624?style=for-the-badge&logo=linux&logoColor=%23000000)
+![Qt](https://img.shields.io/badge/Qt-%2341CD52?style=for-the-badge&logo=qt&logoColor=%23000000)
+![OpenCV](https://img.shields.io/badge/OpenCV-%235C3EE8?style=for-the-badge&logo=opencv&logoColor=%23FFFFFF)
+![PaddleOCR](https://img.shields.io/badge/PaddleOCR-%230062B0?style=for-the-badge&logo=paddlepaddle&logoColor=%23FFFFFF)
+![VScode](https://img.shields.io/badge/VScode-%23007ACC?style=for-the-badge&logo=visualstudiocode&logoColor=%23FFFFFF)
+
+![JLHS](https://img.shields.io/badge/Developed_in-JLHS-blue?style=for-the-badge&logo=educative)
+![love](https://img.shields.io/badge/Made_with-love-red?style=for-the-badge&logo=heart)
+
+
 Prism 是 南京市金陵中学学生研究性学习 项目，本项目的目标是构建基于计算机视觉与深度学习技术的linux平台开源学习辅助软件。
 
 我们的项目涉及计算机视觉，深度学习，应用开发，linux，电子电路等多个方面的知识，预期在1年内完成。

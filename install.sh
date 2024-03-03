@@ -1,6 +1,8 @@
 #!/bin/bash
 python -m venv env
 source ./env/bin/activate
+pip config set global.index-url https://mirrors.cloud.tencent.com/pypi/simple
+pip install pip -U
 pip install paddlepaddle -i https://mirror.baidu.com/pypi/simple
 pip install "paddleocr>=2.0.1"
 pip install -r requirements.txt
