@@ -8,10 +8,17 @@
 ![GitHub Repo stars](https://img.shields.io/github/stars/micraow/prism?style=for-the-badge&logo=github)
 
 ![linux](https://img.shields.io/badge/linux-%23FCC624?style=for-the-badge&logo=linux&logoColor=%23000000)
+![html5](https://img.shields.io/badge/html5-%23E34F26?style=for-the-badge&logo=html5&logoColor=%23FFFFFF)
+![css](https://img.shields.io/badge/css-%231572B6?style=for-the-badge&logo=css3&logoColor=%23FFFFFF)
+![javascript](https://img.shields.io/badge/javascript-%23F7DF1E?style=for-the-badge&logo=javascript&logoColor=%23000000)
+![vue](https://img.shields.io/badge/vue-%234FC08D?style=for-the-badge&logo=vuedotjs&logoColor=%23FFFFFF)
+![ant design](https://img.shields.io/badge/ant_design-%230170FE?style=for-the-badge&logo=antdesign&logoColor=%23FFFFFF)
 ![Qt](https://img.shields.io/badge/Qt-%2341CD52?style=for-the-badge&logo=qt&logoColor=%23000000)
 ![OpenCV](https://img.shields.io/badge/OpenCV-%235C3EE8?style=for-the-badge&logo=opencv&logoColor=%23FFFFFF)
 ![PaddleOCR](https://img.shields.io/badge/PaddleOCR-%230062B0?style=for-the-badge&logo=paddlepaddle&logoColor=%23FFFFFF)
 ![VScode](https://img.shields.io/badge/VScode-%23007ACC?style=for-the-badge&logo=visualstudiocode&logoColor=%23FFFFFF)
+![git](https://img.shields.io/badge/git-%23F05032?style=for-the-badge&logo=git&logoColor=%23FFFFFF)
+
 
 ![JLHS](https://img.shields.io/badge/Developed_in-JLHS-blue?style=for-the-badge&logo=educative)
 ![love](https://img.shields.io/badge/Made_with-love-red?style=for-the-badge&logo=heart)
