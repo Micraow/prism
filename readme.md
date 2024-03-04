@@ -1,4 +1,8 @@
 <h1 align="center">Prism  👋</h1>
+<div align="center">
+<p><a href="https://github.com/micraow/prism">Github Repo</a> · <a href="https://gitee.com/micraow/prism">Gitee Repo</a> · <a href="https://pengs.top/">Peng's Blog</a></p>
+<p><em>你的私人学习助手</em></p>
+</div>
 
 ![GitHub language count](https://img.shields.io/github/languages/count/micraow/prism?style=for-the-badge)
 ![GitHub top language](https://img.shields.io/github/languages/top/micraow/prism?style=for-the-badge&logo=python)
@@ -178,3 +182,31 @@ git pull
 ```
 
 再也不想给windows用户写文档了...
+
+## 不足之处
+
+目前，后端还不稳定，有时不能正确处理复杂环境下的图像，且合并、识别用时长。
+
+翻译时，虽然是多线程同时翻译，但是必须要等到最后一个线程结束才返回结果，不是很好。
+
+## 联系方式
+
+你可以联系我（彭勃）
+
+我的邮箱是： peng@pengs.top
+
+我的网站是 pengs.top,上面有更多的联系方法。
+
+也欢迎向本项目捐赠！
+
+## 参阅文献
+
+[1]项璟,张汝峰,褚俊英等.结合横向投影和仿射变换的文本图像倾斜矫正[J].造纸装备及材料,2020,49(02):251.
+
+[2]王咸锋,黄妙燕.基于OpenCV实现文档物体的纠偏方法[J].电脑知识与技术,2016,12(24):87-89.DOI:10.14004/j.cnki.ckt.2016.3312.
+
+[3]孙丹阳,邵坤艳,孙春志等.基于图像处理的文档图像矫正系统研究与设计[J].电脑与信息技术,2023,31(03):20-23.DOI:10.19414/j.cnki.1005-1228.2023.03.008.
+
+[4]Wang Q, Li B, Xiao T, et al. Learning deep transformer models for machine translation[J]. arXiv preprint arXiv:1906.01787, 2019.
+
+[5]Ghimire D. Comparative study on Python web frameworks: Flask and Django[J]. 2020.
