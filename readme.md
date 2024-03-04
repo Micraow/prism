@@ -1,4 +1,8 @@
 <h1 align="center">Prism  👋</h1>
+<div align="center">
+<p><a href="https://github.com/micraow/prism">Github Repo</a> · <a href="https://gitee.com/micraow/prism">Gitee Repo</a> · <a href="https://pengs.top/">Peng's Blog</a></p>
+<p><em>你的私人学习助手</em></p>
+</div>
 
 ![GitHub language count](https://img.shields.io/github/languages/count/micraow/prism?style=for-the-badge)
 ![GitHub top language](https://img.shields.io/github/languages/top/micraow/prism?style=for-the-badge&logo=python)
@@ -130,3 +134,86 @@ e.错题保存
 **其它基础知识**
 
     1.Markdown（用于写文档）2.git（版本控制）
+
+## 使用方法
+
+### linux
+linux用户初次使用请运行：
+
+```bash
+git clone https://gitee.com/micraow/prism.git
+cd prism
+chmod +x install.sh
+sudo bash install.sh
+python app/main.py
+```
+此后：
+
+```bash
+cd prism
+source ./env/bin/activate
+python app/main.py
+```
+
+### Windows用户：
+
+首先，开机，然后联网
+
+1. 下载git
+2. 打开git shell
+3. 输入： git clone https://gitee.com/micraow/prism.git
+4. 回车（嘲讽某些不回车的）
+5. 打开浏览器，输入https://www.python.org/downloads/windows/
+6. 找到最新的安装包下载（不知道选哪种架构就选64-bit）
+7. 安装刚刚下载的包，注意添加PATH变量
+8. 下载https://bootstrap.pypa.io/get-pip.py到一个文件夹
+9. 在那个文件夹打开git shell（按住shift然后右键就能看到了）
+10. 输入python get-pip.py并回车
+11. 在prism文件夹下打开git shell
+12. python -m venv env
+13. source ./env/bin/activate
+14. 不想写了，自己打开install.sh看看，运行从`pip config set global.index-url https://mirrors.cloud.tencent.com/pypi/simple`到`pip install -r requirements.txt`间的命令
+15. 打开浏览器，输入https://alist.pengs.top/d/64816595359b1e5db47f442f901a98ce4efd8481/alist/models/Helsinki-NLP/opus-mt-en-zh/pytorch_model.bin 把它下载下来
+16. 确保文件名为pytorch_model.bin
+17. 把该文件移动到translate/hf_model/下
+18. 在项目根目录的git shell里运行python app/main.py
+
+以后运行：
+
+<你如果能做到这一步，则你已经有了一定的shell使用经验，参照上方linux的命令即可>
+
+### 更新程序：
+
+```bash
+git pull
+```
+
+再也不想给windows用户写文档了...
+
+## 不足之处
+
+目前，后端还不稳定，有时不能正确处理复杂环境下的图像，且合并、识别用时长。
+
+翻译时，虽然是多线程同时翻译，但是必须要等到最后一个线程结束才返回结果，不是很好。
+
+## 联系方式
+
+你可以联系我（彭勃）
+
+我的邮箱是： peng@pengs.top
+
+我的网站是 pengs.top,上面有更多的联系方法。
+
+也欢迎向本项目捐赠！
+
+## 参阅文献
+
+[1]项璟,张汝峰,褚俊英等.结合横向投影和仿射变换的文本图像倾斜矫正[J].造纸装备及材料,2020,49(02):251.
+
+[2]王咸锋,黄妙燕.基于OpenCV实现文档物体的纠偏方法[J].电脑知识与技术,2016,12(24):87-89.DOI:10.14004/j.cnki.ckt.2016.3312.
+
+[3]孙丹阳,邵坤艳,孙春志等.基于图像处理的文档图像矫正系统研究与设计[J].电脑与信息技术,2023,31(03):20-23.DOI:10.19414/j.cnki.1005-1228.2023.03.008.
+
+[4]Wang Q, Li B, Xiao T, et al. Learning deep transformer models for machine translation[J]. arXiv preprint arXiv:1906.01787, 2019.
+
+[5]Ghimire D. Comparative study on Python web frameworks: Flask and Django[J]. 2020.
