@@ -10,6 +10,7 @@
 ![GitHub repo size](https://img.shields.io/github/repo-size/micraow/prism?style=for-the-badge&logo=gnubash&logoColor=%23000000&labelColor=%234EAA25&color=%23008DE4)
 ![GitHub forks](https://img.shields.io/github/forks/micraow/prism?style=for-the-badge&logo=github)
 ![GitHub Repo stars](https://img.shields.io/github/stars/micraow/prism?style=for-the-badge&logo=github)
+[![DeepSource](https://app.deepsource.com/gh/Micraow/prism.svg/?label=active+issues&show_trend=true&token=HyakmGyrHNo6ZnZyzynFzddU)](https://app.deepsource.com/gh/Micraow/prism/)
 
 ![linux](https://img.shields.io/badge/linux-%23FCC624?style=for-the-badge&logo=linux&logoColor=%23000000)
 ![Qt](https://img.shields.io/badge/Qt-%2341CD52?style=for-the-badge&logo=qt&logoColor=%23000000)
