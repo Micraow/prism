@@ -35,7 +35,8 @@ class Translator(QObject):
     cuoti = Signal(str)
     # result = Signal(str, arguments=['provider', 'result'])
 
-    def call_backend(self, content, provider, results):
+    @staticmethod
+    def call_backend(content, provider, results):
         try:
             res = provider.translate(content)
             results[provider.getName()] = res
@@ -71,7 +72,8 @@ class Translator(QObject):
 
         return result
 
-    def result_parser(self, raw_result):
+    @staticmethod
+    def result_parser(raw_result):
         result = ""
         for k, v in raw_result:
             result.join([k, ":", v, "\n"])
