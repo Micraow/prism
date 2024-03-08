@@ -38,10 +38,12 @@ class YoudaoTranslater:
         )
         return res.json()["data"]["value"]["textTranslate"]
 
-    def __sticTime(self) -> str:
+    @staticmethod
+    def __sticTime() -> str:
         return str(int(time.time() * 1000))
 
-    def __sign(self, t: str, key: str) -> str:
+    @staticmethod
+    def __sign(t: str, key: str) -> str:
         return (
             MD5.new(
                 f"client=fanyideskweb&mysticTime={t}&product=webfanyi&key={key}".encode(
@@ -64,7 +66,8 @@ class YoudaoTranslater:
             "keyfrom": "fanyi.web",
         }
 
-    def __decode(self, src: str) -> dict:
+    @staticmethod
+    def __decode(src: str) -> dict:
         # see: https://blog.csdn.net/nick131410/article/details/128877625
         key = b"ydsecret://query/key/B*RGygVywfNBwpmBaZg*WT7SIOUP2T0C9WHMZN39j^DAdaZhAnxvGcCY6VYFwnHl"
         iv = b"ydsecret://query/iv/C@lZe2YzHtZ2CYgaXKSVfsb7Y4QWHjITPPZ0nQp87fBeJ!Iv6v^6fvi2WN@bYpJ4"
