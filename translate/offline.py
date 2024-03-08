@@ -49,7 +49,7 @@ def downlad(path):
 
 def translate(input):
     current_work_dir = os.path.dirname(__file__)
-    if os.path.exists(current_work_dir+"/hf_model/pytorch_model.bin") == False:
+    if os.path.exists(current_work_dir+"/hf_model/pytorch_model.bin") is False:
         # print(os.path.exists(current_work_dir+"/hf_model/pytorch_model.bin"))
 
         # print(current_work_dir)

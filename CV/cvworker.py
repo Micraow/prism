@@ -7,7 +7,7 @@ import enhancer
 
 class cv():
     def __init__(self):
-        if os.path.exists("/tmp/prism") != True:
+        if os.path.exists("/tmp/prism") is not True:
             os.mkdir("/tmp/prism")
         self.cap = cv2.VideoCapture(0)  # 参数为0时调用本地摄像头；参数为1时调用外接摄像头
         self.index = 0
