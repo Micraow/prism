@@ -55,8 +55,8 @@ class Translator(QObject):
         """
         content = content.strip()
         result = {}
-        if network.getNetworkstatus() == True:
-            if content.isalpha() != True:
+        if network.getNetworkstatus() is True:
+            if content.isalpha() is not True:
                 for backend in [bing, deepl, youdao, offline]:
                     t = Thread(target=self.call_backend,
                                args=(content, backend, result))
