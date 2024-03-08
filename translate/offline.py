@@ -44,7 +44,7 @@ def downlad(path):
     # 等待所有任务执行完毕
         as_completed(futures)
 
-    return downlad()
+    return downlad(path)
 
 
 def translate(input):

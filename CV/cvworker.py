@@ -52,11 +52,11 @@ class cv():
         self.index = self.index+1
         return path
 
-    def clean(self):
+    def clean(self, path="/tmp/prism"):
         # 清理保存的一系列图片，无返回值
-        ls = os.listdir("/tmp/prism")
+        ls = os.listdir(path)
         for i in ls:
-            f_path = os.path.join("/tmp/prism", i)
+            f_path = os.path.join(path, i)
         # 判断是否是一个目录,若是,则递归删除
             if os.path.isdir(f_path):
                 self.clean(f_path)
