@@ -11,5 +11,6 @@ view = QQmlApplicationEngine()
 qmlRegisterType(backend.Translator, 'Translator', 1, 0, 'Translator')
 
 view.load(QUrl.fromLocalFile(qml_file.resolve()))
-sys.exit(app.exec())
 del view
+sys.exit(app.exec())
+

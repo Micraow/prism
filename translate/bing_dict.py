@@ -3,7 +3,7 @@ import re
 url = 'https://cn.bing.com/dict/search?mkt=en-us&q='
 
 
-def explain(input):
+def explain(inputs):
     res = requests.get(url+input).text
     r = re.compile(r"<meta name=\"description\" content=\"必应词典为您提供(.*?)\" \/>")
     res = re.findall(r, res)

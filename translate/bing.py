@@ -7,7 +7,7 @@ token_headers = {
 token = requests.get(token_url, headers=token_headers)
 
 
-def translate(input):
+def translate(inputs):
     """调用edge的网页翻译API用作我们的翻译后端
 
     Args:
