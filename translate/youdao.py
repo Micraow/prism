@@ -96,10 +96,10 @@ def main():
     print(f"times: {times}")
 
 
-def translate(input):
+def translate(inputs):
     translater = YoudaoTranslater()
-    # return translater.translate(input)
-    return translater.translate(input)['translateResult'][0][0]['tgt']
+    # return translater.translate(inputs)
+    return translater.translate(inputs)['translateResult'][0][0]['tgt']
 
 
 if __name__ == "__main__":
