@@ -23,8 +23,7 @@ class img2txt():
         img_path = path  # 设置图片路径
         result = self.ocr.ocr(img_path, cls=False, det=False)  # 使用PaddleOCR进行文字识别，不进行分类和检测
         rec_res = []  # 初始化识别结果列表
-        for idx in range(len(result)):  # 遍历识别结果
-            res = result[idx]  # 获取当前行的结果
+        for idx, res in enumerate(result):  # 遍历识别结果
             for line in res:  # 遍历当前行的每一行
                 rec_res.append(line[0])  # 将识别的文本添加到结果列表
         return rec_res  # 返回识别结果
@@ -41,8 +40,7 @@ class img2txt():
         img_path = path  # 设置图片路径
         result = self.ocr.ocr(img_path, cls=False)  # 使用PaddleOCR进行文字识别，不进行分类
         loc_res = []  # 初始化定位结果列表
-        for idx in range(len(result)):  # 遍历识别结果
-            res = result[idx]  # 获取当前行的结果
+        for idx, res in enumerate(result):  # 遍历识别结果
             for line in res:  # 遍历当前行的每一行
                 loc_res.append(line[0])  # 将定位信息添加到结果列表
         return loc_res  # 返回定位结果
