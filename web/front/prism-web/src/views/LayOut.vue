@@ -1,3 +1,5 @@
+<script setup>
+</script>
 <template>
   <!--顶级Laytou 容器-->
   <a-layout id="components-layout" style="min-height: 100vh">
@@ -12,6 +14,7 @@
         <a-menu-item key="2" @click="changeMenu('huaci')"> 划词翻译 </a-menu-item>
         <a-menu-item key="3" @click="changeMenu('paizhao')"> 拍照翻译 </a-menu-item>
         <a-menu-item key="4" @click="changeMenu('cuoti')"> 错题保存 </a-menu-item>
+        <a-menu-item key="5" @click="changeMenu('about')"> 关于我们 </a-menu-item>
       </a-menu>
     </a-layout-sider>
     <!--右边主要内容-->
@@ -21,7 +24,11 @@
         <!--内容头部title-->
         <div :style="{ padding: '24px', background: '#fff', minHeight: '360px' }">
           <!--定义路由出口-->
-          <router-view />
+          <router-view v-slot="{ Component, route }">
+            <transition name="animation" mode="out-in">
+              <component :is="Component" :key="route.path" />
+            </transition>
+          </router-view>
         </div>
       </a-layout-content>
       <!--右边页脚-->
@@ -47,6 +54,23 @@ export default {
     }
   }
 }
+
 </script>
 
-<style></style>
+<style>
+.animation-enter-from,
+.animation-leave-to {
+	transform: translateX(20px);
+	opacity: 0;
+}
+.animation-enter-to,
+.animation-leave-from {
+	opacity: 1;
+}
+.animation-enter-active {
+	transition: all 0.7s ease;
+}
+.animation-leave-active {
+	transition: all 0.3s cubic-bezier(1, 0.6, 0.6, 1);
+}
+</style>

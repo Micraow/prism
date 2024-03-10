@@ -4,6 +4,7 @@ import HomeView from '../views/HomeView.vue'
 import HuaCi from '../views/HuaCi.vue'
 import PaiZhao from '../views/PaiZhao.vue'
 import CuoTi from '../views/CuoTi.vue'
+import About from '../views/AboutView.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -12,6 +13,7 @@ const router = createRouter({
       path: '/',
       name: 'layout',
       component: LayOut,
+      redirect: 'home',
       children: [
         {
           path: '/home',
@@ -36,6 +38,11 @@ const router = createRouter({
           path: '/cuoti',
           name: '错题保存',
           component: CuoTi
+        },
+        {
+          path: '/about',
+          name: '关于',
+          component: About
         }
       ]
     }
