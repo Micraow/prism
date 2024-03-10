@@ -1,5 +1,3 @@
-<script setup>
-</script>
 <template>
   <!--顶级Laytou 容器-->
   <a-layout id="components-layout" style="min-height: 100vh">
