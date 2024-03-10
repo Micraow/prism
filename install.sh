@@ -39,6 +39,9 @@ Installing...
 END
 
 
+sudo apt update
+sudo apt install nodejs npm
+npm config set registry http://mirrors.cloud.tencent.com/npm/
 curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py
 python get-pip.py
 rm get-pip.py

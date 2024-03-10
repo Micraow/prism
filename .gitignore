@@ -174,3 +174,4 @@ coverage
 *.sw?
 
 *.tsbuildinfo
+vue-project
