@@ -43,6 +43,28 @@ class Translator(QObject):
         except:
             results[provider.getName()] = "无结果"
 
+    @staticmethod
+    def call_backend_simple(content,provider):
+        """**更适合webui的后端调用**
+
+        Args:
+            content (str): 内容原文
+            provider (str): 翻译供应商["bing", "deepl", "youdao", "offline"]
+        """
+        match_table={
+            "bing":bing,
+            "deepl":deepl,
+            "youdao":youdao,
+            "offline":offline,
+        }
+
+        provider=match_table.get(provider)
+
+        try:
+            return provider.translate(content)
+        except:
+            return "无结果"
+
     def txt2txt(self, content: str):
         """调用translate的接口,实现英译中
 
