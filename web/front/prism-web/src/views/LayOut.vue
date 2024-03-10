@@ -1,5 +1,4 @@
-<script setup>
-</script>
+<script setup></script>
 <template>
   <!--顶级Laytou 容器-->
   <a-layout id="components-layout" style="min-height: 100vh">
@@ -54,23 +53,22 @@ export default {
     }
   }
 }
-
 </script>
 
 <style>
 .animation-enter-from,
 .animation-leave-to {
-	transform: translateX(20px);
-	opacity: 0;
+  transform: translateX(20px);
+  opacity: 0;
 }
 .animation-enter-to,
 .animation-leave-from {
-	opacity: 1;
+  opacity: 1;
 }
 .animation-enter-active {
-	transition: all 0.7s ease;
+  transition: all 0.7s ease;
 }
 .animation-leave-active {
-	transition: all 0.3s cubic-bezier(1, 0.6, 0.6, 1);
+  transition: all 0.3s cubic-bezier(1, 0.6, 0.6, 1);
 }
 </style>
