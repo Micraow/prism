@@ -27,10 +27,8 @@
 ![VScode](https://img.shields.io/badge/VScode-%23007ACC?style=for-the-badge&logo=visualstudiocode&logoColor=%23FFFFFF)
 ![git](https://img.shields.io/badge/git-%23F05032?style=for-the-badge&logo=git&logoColor=%23FFFFFF)
 
-
 ![JLHS](https://img.shields.io/badge/Developed_in-JLHS-blue?style=for-the-badge&logo=educative)
 ![love](https://img.shields.io/badge/Made_with-love-red?style=for-the-badge&logo=heart)
-
 
 Prism 是 南京市金陵中学学生研究性学习 项目，本项目的目标是构建基于计算机视觉与深度学习技术的linux平台开源学习辅助软件。
 
@@ -53,11 +51,10 @@ Prism 是 南京市金陵中学学生研究性学习 项目，本项目的目标
 [开发文档](https://gitee.com/micraow/prism/tree/master/docs)
 
 ## 目标功能
+
 使用摄像模块在待识别文字上划过，通过API调用第三方翻译服务，将对应中文显示在屏幕上。要求能在一定程度上克服因纸张或字体风格（斜体、花体等）而造成的识别困难。
 
-
 **系统层** ：下载所提供linux下的一键安装脚本
-
 
 **预处理** ：1.以合适的速率从摄像头获取画面，合成为一张图像
 
@@ -67,19 +64,15 @@ Prism 是 南京市金陵中学学生研究性学习 项目，本项目的目标
 
 4.根据单词，对图像进行分割，运用模型识别
 
-
 **模型** ：接收预处理后的图像，识别成文字
-
 
 **翻译** ：1.与多个翻译后端对接，获取多家翻译。对于句子返回译文，对于单词返回词典释义
 
 2.提供本地离线翻译模型
 
-
 **应用层** ：1.提示用户时间，日期，电量，引导用户连接WiFi
 
 2.功能菜单
-
 
 a.扫描翻译（扫描上传图片上的文字并翻译）
 
@@ -91,14 +84,12 @@ d.板书保存（不要求识别，只要矫正变形，改变一下背景颜色
 
 e.错题保存
 
-
 3.在用户扫描单词或拍摄照片时，引导其操作
 
 4.协调调用各层所提供的接口，并以多线程异步的方式进行，提高效率（比如一边扫描一边预处理和识别）
 
-
-
 ## 技术方案
+
 **系统层**：提供linux下的一键安装脚本
 
 **应用层**：使用PySide6开发,使用Qt Quick技术，利用QML设计界面
@@ -111,7 +102,7 @@ e.错题保存
 
                 e.g.  a.I have a cat.
 
-                     b.I have a cat.     
+                     b.I have a cat.
 
                        I have have a cat.
 
@@ -142,6 +133,7 @@ e.错题保存
 ## 使用方法
 
 ### linux
+
 linux用户初次使用请运行：
 
 ```bash
@@ -151,6 +143,7 @@ chmod +x install.sh
 sudo bash install.sh
 python app/main.py
 ```
+
 此后：
 
 ```bash

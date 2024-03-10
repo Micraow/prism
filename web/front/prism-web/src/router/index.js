@@ -36,7 +36,7 @@ const router = createRouter({
           path: '/cuoti',
           name: '错题保存',
           component: CuoTi
-        },
+        }
       ]
     }
   ]

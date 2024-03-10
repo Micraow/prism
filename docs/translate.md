@@ -8,7 +8,6 @@ translate(str:英文)
 
 返回： 中文结果
 
-
 调用edge的网页翻译API用作我们的翻译后端
 
 1. 从 https://edge.microsoft.com/translate/auth 获取token
@@ -43,6 +42,7 @@ headers = {
 ```
 
 ## deepl, 有道翻译,本地翻译
+
 同bing翻译
 
 使用方法：
