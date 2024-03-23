@@ -1,6 +1,7 @@
 <script setup>
 import { ref, onMounted, onBeforeUnmount } from 'vue'
 import WelcomePage from '../components/WelcomePage.vue'
+import GoToInternetConnection from '../components/GoToInternetConnection.vue'
 /**
  * 显示实时时间
  */
@@ -57,6 +58,7 @@ onBeforeUnmount(() => {
       sub-title="很高兴见到你"
     />
     <WelcomePage />
+    <GoToInternetConnection />
     <p id="clock">{{ nowTime }}</p>
   </main>
 </template>
