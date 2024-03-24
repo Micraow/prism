@@ -10,7 +10,7 @@
       <p style="text-align: center;">
       <a-button type="primary" shape="circle" size="large" style="height: 120px;width: 120px;">
         <template #icon>
-          <DownloadOutlined />
+          <PlayCircleOutlined />
         </template>
       </a-button>
     </p>

@@ -13,6 +13,7 @@
         <a-menu-item key="3" @click="changeMenu('paizhao')"> 拍照翻译 </a-menu-item>
         <a-menu-item key="4" @click="changeMenu('cuoti')"> 错题保存 </a-menu-item>
         <a-menu-item key="5" @click="changeMenu('about')"> 关于我们 </a-menu-item>
+        <a-menu-item key="6" @click="changeMenu('internetconnection')"> 网络连接 </a-menu-item>
       </a-menu>
     </a-layout-sider>
     <!--右边主要内容-->

@@ -1,7 +1,4 @@
-<script setup>
-import InternetConnection from '../views/InternetConnection.vue'
-</script>
-
+<script setup></script>
 <template>
     <header>
       <p style="text-align: center">
