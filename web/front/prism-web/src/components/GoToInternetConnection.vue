@@ -12,7 +12,7 @@
           />
         methods:{
             turnpage(){
-                this.$router.replace('/InternetConnection')
+                this.$router.push('/InternetConnection')
             }
         }
       </p>

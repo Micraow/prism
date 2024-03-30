@@ -2,7 +2,7 @@ import { createApp } from 'vue'
 import App from './App.vue'
 import router from './router'
 const app = createApp(App)
-import { Divider, Layout, Menu, PageHeader,Card,Button } from 'ant-design-vue'
+import { Divider, Layout, Menu, PageHeader,Card,Button,List } from 'ant-design-vue'
 
 app.use(Divider)
 app.use(Layout)
@@ -10,6 +10,7 @@ app.use(Menu)
 app.use(PageHeader)
 app.use(Card)
 app.use(Button)
+app.use(List)
 app.config.productionTip = false
 
 app.use(router)
