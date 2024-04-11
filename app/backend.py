@@ -24,11 +24,15 @@ import youdao
 
 
 class Translator(QObject):
-    def __init__(self):
+    def __init__(self, mode=0):
+        '''
+        mode: pyqt为0,web为1
+        '''
         QObject.__init__(self)
         self.worker = cvworker.cv()
         self.img2txt = recognize.img2txt()
         self.photoFlag = False
+        self.mode = mode
 
     pic = Signal(str)
     live = Signal(str)
@@ -98,7 +102,7 @@ class Translator(QObject):
     def result_parser(raw_result):
         result = ""
         for k, v in raw_result:
-            result.join([k, ":", v, "\n"])
+            result.join([k, ":", v, "\n"]) # TODO
         return result
 
     @Slot()
@@ -107,7 +111,10 @@ class Translator(QObject):
         res = self.img2txt.rec(path)
         string = "".join(res)
         results = self.result_parser(self.txt2txt(string))
-        self.pic.emit(results)
+        if self.mode == 0:
+            self.pic.emit(results)
+        else:
+            return results
 
     @Slot()
     def liveTranslate(self):
@@ -125,9 +132,15 @@ class Translator(QObject):
             path = self.worker.stitch(images_path)
             res = self.img2txt.rec(path)
             string = "".join(res)
-            self.live.emit(self.result_parser(self.txt2txt(string)))
+            if self.mode == 0:
+                self.live.emit(self.result_parser(self.txt2txt(string)))
+            else:
+                return self.result_parser(self.txt2txt(string))
         except:
-            self.live.emit("无结果")
+            if self.mode == 0:
+                self.live.emit("无结果")
+            else:
+                return None
 
     @Slot()
     def endLive(self):
@@ -136,7 +149,13 @@ class Translator(QObject):
     @Slot()
     def enhancer(self):
         try:
-            self.worker.save(self.worker.enhance(self.worker.takePic()))
-            self.cuoti.emit("成功")
+            path = self.worker.save(self.worker.enhance(self.worker.takePic()))
+            if self.mode == 0:
+                self.cuoti.emit("成功")
+            else:
+                return path
         except:
-            self.cuoti.emit("失败")
+            if self.mode == 0:
+                self.cuoti.emit("失败")
+            else:
+                return None
