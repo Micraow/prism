@@ -2,7 +2,8 @@ from flask import Flask
 from flask import request
 import sys
 import os
-import uuid
+import sqlite # 不是python内置的sqlite3
+from threading import Thread
 
 current_file_dir = os.path.dirname(__file__)
 root = os.path.abspath(os.path.join(current_file_dir, "../.."))
@@ -12,8 +13,9 @@ from app import network, backend  # 勿格式化文档！！此行必须在此�
 
 app = Flask(__name__)
 
-now_UUID = 0
+now_ID = 0
 Backend = backend.Translator(mode=1) # mode=1 用于web端
+res = {}
 
 @app.route('/')
 def echo_ok():
@@ -40,13 +42,25 @@ def connect_wifi():
 def getNetworkstatus():
     return {"Result": network.getNetworkstatus()}
 
+def call_live_translate():
+    global now_ID
+    global res
+    res = Backend.liveTranslate()
+    db = sqlite.get_db()
+    new_res = {key: value for key, value in res.items() if key != "origin"}
+    db.execute("INSERT INTO PRISM (?)",[now_ID,res["origin"],new_res])
+
 
 @app.route('/livetranslate/start', methods=['GET'])
 def start_livetranslate():
-    if now_UUID != 0:
+    global now_ID
+    if now_ID != 0:
         return {"Result": "Fail", "Ticket": 0}
 
     else:
-        now_UUID = uuid.uuid4()
-        Backend.liveTranslate()
+        now_ID = sqlite.query_db("SELECT ID FROM PRISM ORDERED BY ID DESC",one=True) + 1
+        t = Thread(target=call_live_translate)
+        t.start()
+        return {"Result": "Success", "Ticket": now_ID}
+
 

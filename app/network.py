@@ -1,5 +1,4 @@
 import requests
-import pywifi
 import time
 
 
@@ -20,6 +19,7 @@ def scan_network():
     '''
     # pywifi无法获取是否需要密码，那也是个过时的库了
     # 调用linux下的networkmanager来做这块
+    # 目前的思路是对nmcli的返回结果进行字符串解析
     return {}  # TODO
 
 

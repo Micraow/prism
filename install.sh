@@ -40,7 +40,9 @@ END
 
 
 sudo apt update
-sudo apt install nodejs npm
+sudo apt install nodejs npm network-manager
+sudo systemctl start NetworkManager.service 
+sudo systemctl enable NetworkManager.service
 npm config set registry http://mirrors.cloud.tencent.com/npm/
 curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py
 python get-pip.py

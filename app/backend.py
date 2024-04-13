@@ -33,6 +33,7 @@ class Translator(QObject):
         self.img2txt = recognize.img2txt()
         self.photoFlag = False
         self.mode = mode
+        self.result = {}
 
     pic = Signal(str)
     live = Signal(str)
@@ -81,6 +82,7 @@ class Translator(QObject):
         """
         content = content.strip()
         result = {}
+        result["origin"] = content
         if network.getNetworkstatus() is True:
             if content.isalpha() is not True:
                 for backend in [bing, deepl, youdao, offline]:
@@ -110,19 +112,24 @@ class Translator(QObject):
         path = self.worker.takePic()
         res = self.img2txt.rec(path)
         string = "".join(res)
-        results = self.result_parser(self.txt2txt(string))
         if self.mode == 0:
+            results = self.result_parser(self.txt2txt(string))
             self.pic.emit(results)
         else:
+            results = self.txt2txt(string)
             return results
 
     @Slot()
-    def liveTranslate(self):
-        back = Thread(target=self._liveTranslate)
-        back.run()
+    def liveTranslate(self, var=None):
+        back = Thread(target=self._liveTranslate,args=(var,))
+        back.start()
+        back.join()
+        res = self.result
+        return res
 
-    def _liveTranslate(self):
+    def _liveTranslate(self,var):
         # self.worker.startCapture(100) # 100ms一张
+        var = {}
         images_path = []
         while self.photoFlag:
             path = self.worker.takePic()
@@ -135,12 +142,14 @@ class Translator(QObject):
             if self.mode == 0:
                 self.live.emit(self.result_parser(self.txt2txt(string)))
             else:
-                return self.result_parser(self.txt2txt(string))
+                self.result =  self.txt2txt(string)
+                var = self.result
         except:
             if self.mode == 0:
                 self.live.emit("无结果")
             else:
-                return None
+                self.result = {}
+                var = {}
 
     @Slot()
     def endLive(self):
