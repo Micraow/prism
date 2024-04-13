@@ -24,11 +24,16 @@ import youdao
 
 
 class Translator(QObject):
-    def __init__(self):
+    def __init__(self, mode=0):
+        '''
+        mode: pyqt为0,web为1
+        '''
         QObject.__init__(self)
         self.worker = cvworker.cv()
         self.img2txt = recognize.img2txt()
         self.photoFlag = False
+        self.mode = mode
+        self.result = {}
 
     pic = Signal(str)
     live = Signal(str)
@@ -77,6 +82,7 @@ class Translator(QObject):
         """
         content = content.strip()
         result = {}
+        result["origin"] = content
         if network.getNetworkstatus() is True:
             if content.isalpha() is not True:
                 for backend in [bing, deepl, youdao, offline]:
@@ -98,7 +104,7 @@ class Translator(QObject):
     def result_parser(raw_result):
         result = ""
         for k, v in raw_result:
-            result.join([k, ":", v, "\n"])
+            result.join([k, ":", v, "\n"]) # TODO
         return result
 
     @Slot()
@@ -106,16 +112,24 @@ class Translator(QObject):
         path = self.worker.takePic()
         res = self.img2txt.rec(path)
         string = "".join(res)
-        results = self.result_parser(self.txt2txt(string))
-        self.pic.emit(results)
+        if self.mode == 0:
+            results = self.result_parser(self.txt2txt(string))
+            self.pic.emit(results)
+        else:
+            results = self.txt2txt(string)
+            return results
 
     @Slot()
-    def liveTranslate(self):
-        back = Thread(target=self._liveTranslate)
-        back.run()
+    def liveTranslate(self, var=None):
+        back = Thread(target=self._liveTranslate,args=(var,))
+        back.start()
+        back.join()
+        res = self.result
+        return res
 
-    def _liveTranslate(self):
+    def _liveTranslate(self,var):
         # self.worker.startCapture(100) # 100ms一张
+        var = {}
         images_path = []
         while self.photoFlag:
             path = self.worker.takePic()
@@ -125,9 +139,17 @@ class Translator(QObject):
             path = self.worker.stitch(images_path)
             res = self.img2txt.rec(path)
             string = "".join(res)
-            self.live.emit(self.result_parser(self.txt2txt(string)))
+            if self.mode == 0:
+                self.live.emit(self.result_parser(self.txt2txt(string)))
+            else:
+                self.result =  self.txt2txt(string)
+                var = self.result
         except:
-            self.live.emit("无结果")
+            if self.mode == 0:
+                self.live.emit("无结果")
+            else:
+                self.result = {}
+                var = {}
 
     @Slot()
     def endLive(self):
@@ -136,7 +158,13 @@ class Translator(QObject):
     @Slot()
     def enhancer(self):
         try:
-            self.worker.save(self.worker.enhance(self.worker.takePic()))
-            self.cuoti.emit("成功")
+            path = self.worker.save(self.worker.enhance(self.worker.takePic()))
+            if self.mode == 0:
+                self.cuoti.emit("成功")
+            else:
+                return path
         except:
-            self.cuoti.emit("失败")
+            if self.mode == 0:
+                self.cuoti.emit("失败")
+            else:
+                return None
