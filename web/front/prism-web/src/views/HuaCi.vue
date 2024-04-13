@@ -10,10 +10,15 @@
       <p style="text-align: center;">
       <a-button type="primary" shape="circle" size="large" style="height: 120px;width: 120px;">
         <template #icon>
-          <PlayCircleOutlined />
+          <PlayCircleOutlined style="fontSize: 36px"/>
         </template>
       </a-button>
     </p>
     </a-card>
   </main>
 </template>
+<script>
+import { PlayCircleOutlined } from '@ant-design/icons-vue'
+// TODO PaiZhao那边这么导入就好了，这边如此导入不行，不知为何
+
+</script>

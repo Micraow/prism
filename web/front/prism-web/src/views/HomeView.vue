@@ -52,11 +52,7 @@ onBeforeUnmount(() => {
 
 <template>
   <main>
-    <a-page-header
-      style="border: 1px solid rgb(235, 237, 240)"
-      title="主页"
-      sub-title="很高兴见到你"
-    />
+    <a-page-header style="border: 1px solid rgb(235, 237, 240)" title="主页" sub-title="很高兴见到你" />
     <WelcomePage />
     <GoToInternetConnection />
     <p id="clock">{{ nowTime }}</p>
