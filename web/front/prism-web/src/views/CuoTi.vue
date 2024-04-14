@@ -26,7 +26,6 @@
     </a-space>
   </main>
 </template>
-PictureOutlined
 
 <script setup>
 import { PlusSquareOutlined } from '@ant-design/icons-vue'
