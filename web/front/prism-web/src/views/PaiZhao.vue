@@ -18,10 +18,13 @@
         <a-collapse-panel key="1" header="必应翻译">
           <p>{{ bing }}</p>
         </a-collapse-panel>
-        <a-collapse-panel key="2" header="网易翻译">
+        <a-collapse-panel key="2" header="有道翻译">
           <p>{{ wangyi }}</p>
         </a-collapse-panel>
-        <a-collapse-panel key="3" header="离线翻译">
+        <a-collapse-panel key="3" header="DeepL翻译">
+          <p>{{ deepl }}</p>
+        </a-collapse-panel>
+        <a-collapse-panel key="4" header="离线翻译">
           <p>{{ lixian }}</p>
         </a-collapse-panel>
       </a-collapse>
@@ -31,9 +34,10 @@
 
 <script lang="ts" setup>
 import { ref } from 'vue';
-const activeKey = ref(['1', '2', '3']);
+const activeKey = ref(['1', '2', '3','4']);
 const bing = `has not finished`;
 const wangyi = `has not finished`
+const deepl = `has not finished`
 const lixian = `has not finished`
 import { CameraOutlined } from '@ant-design/icons-vue'
 </script>

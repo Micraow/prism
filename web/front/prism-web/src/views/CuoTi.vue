@@ -10,10 +10,13 @@
       <p style="text-align: center;">
       <a-button type="primary" shape="circle" size="large" style="height: 120px;width: 120px;">
         <template #icon>
-          <PlusSquareOutlined />
+          <PlusSquareOutlined style="fontSize: 36px" />
         </template>
       </a-button>
     </p>
     </a-card>
   </main>
 </template>
+<script setup>
+import { PlusSquareOutlined } from '@ant-design/icons-vue'
+</script>
