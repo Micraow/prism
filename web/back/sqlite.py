@@ -18,7 +18,7 @@ def init_db(db):
     ORI：当TYPE为LIVE或PIC时保存原文
 
     RES：当TYPE为LIVE或PIC时保存译文
-    
+
     PATH：当TYPE为CUOTI时保存图片路径
 
     '''
@@ -36,6 +36,7 @@ def init_db(db):
         ORI            TEXT     ,
         RES            TEXT,
         PATH           TEXT);''')
+    return db
 
 
 def get_db():
