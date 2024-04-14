@@ -1,6 +1,7 @@
 <script setup>
 import { ref, onMounted, onBeforeUnmount } from 'vue'
 import WelcomePage from '../components/WelcomePage.vue'
+import GoToInternetConnection from '../components/GoToInternetConnection.vue'
 /**
  * 显示实时时间
  */
@@ -51,12 +52,9 @@ onBeforeUnmount(() => {
 
 <template>
   <main>
-    <a-page-header
-      style="border: 1px solid rgb(235, 237, 240)"
-      title="主页"
-      sub-title="很高兴见到你"
-    />
+    <a-page-header style="border: 1px solid rgb(235, 237, 240)" title="主页" sub-title="很高兴见到你" />
     <WelcomePage />
+    <GoToInternetConnection />
     <p id="clock">{{ nowTime }}</p>
   </main>
 </template>
@@ -67,7 +65,7 @@ onBeforeUnmount(() => {
   font-family: Verdana, Geneva, Tahoma, sans-serif;
   text-align: center;
   font-size: 3em;
-  color: crimson;
+  color: rgb(212, 18, 57);
   justify-content: center;
   align-items: center;
 }

@@ -5,6 +5,7 @@ import HuaCi from '../views/HuaCi.vue'
 import PaiZhao from '../views/PaiZhao.vue'
 import CuoTi from '../views/CuoTi.vue'
 import About from '../views/AboutView.vue'
+import InternetConnection from '../views/InternetConnection.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -43,7 +44,12 @@ const router = createRouter({
           path: '/about',
           name: '关于',
           component: About
-        }
+        },
+        {
+          path: '/internetconnection',
+          name: '网络连接',
+          component: InternetConnection
+        },
       ]
     }
   ]
