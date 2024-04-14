@@ -58,9 +58,13 @@ def start_livetranslate():
         return {"Result": "Fail", "Ticket": 0}
 
     else:
-        now_ID = sqlite.query_db("SELECT ID FROM PRISM ORDERED BY ID DESC",one=True) + 1
+        try:
+            now_ID = sqlite.query_db("SELECT ID FROM PRISM ORDERED BY ID DESC",one=True) + 1
+        except:
+            now_ID = 1 # 第一次用，没有已有记录
         t = Thread(target=call_live_translate)
         t.start()
         return {"Result": "Success", "Ticket": now_ID}
 
 
+# 注意：end端点需要将now_ID设为0,query端点需要将全局变量res设为空
