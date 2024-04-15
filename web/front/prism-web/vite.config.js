@@ -9,6 +9,7 @@ export default defineConfig({
   minify: true, // 是否压缩代码
   sourceMap: true, // 是否生成sourceMap
   plugins: [vue()],
+  server:{host:'0.0.0.0'},
   resolve: {
     alias: {
       '@': fileURLToPath(new URL('./src', import.meta.url))

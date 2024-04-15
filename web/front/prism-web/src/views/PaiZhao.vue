@@ -8,7 +8,7 @@
         <p style="text-align: center;">
           <a-button type="primary" shape="circle" size="large" style="height: 120px;width: 120px;">
             <template #icon>
-              <CameraOutlined style="fontSize: 36px"/>
+              <CameraOutlined style="fontSize: 36px" />
             </template>
           </a-button>
         </p>
@@ -28,17 +28,28 @@
           <p>{{ lixian }}</p>
         </a-collapse-panel>
       </a-collapse>
+
+      <a-card>
+        <p style="text-align: center;font-size: large;font-weight: bold;">历史记录</p>
+        <p style="text-align: center;">
+          <a-button type="primary" shape="circle" size="large" style="height: 120px;width: 120px;">
+            <template #icon>
+              <SaveOutlined style="fontSize: 36px" />
+            </template>
+          </a-button>
+        </p>
+      </a-card>
     </a-space>
   </main>
 </template>
 
 <script lang="ts" setup>
 import { ref } from 'vue';
-const activeKey = ref(['1', '2', '3','4']);
+const activeKey = ref(['1', '2', '3', '4']);
 const bing = `has not finished`;
 const wangyi = `has not finished`
 const deepl = `has not finished`
 const lixian = `has not finished`
 import { CameraOutlined } from '@ant-design/icons-vue'
+import { SaveOutlined } from '@ant-design/icons-vue'
 </script>
-
