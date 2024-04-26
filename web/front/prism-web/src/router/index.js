@@ -6,6 +6,8 @@ import PaiZhao from '../views/PaiZhao.vue'
 import CuoTi from '../views/CuoTi.vue'
 import About from '../views/AboutView.vue'
 import InternetConnection from '../views/InternetConnection.vue'
+import HistoryPaiZhao from '../views/HistoryPaiZhao.vue'
+import CuoTiSaving from '../views/CuoTiSaving.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -49,6 +51,16 @@ const router = createRouter({
           path: '/internetconnection',
           name: '网络连接',
           component: InternetConnection
+        },
+        {
+          path: '/historypaizhao',
+          name: '拍照翻译历史',
+          component: HistoryPaiZhao
+        },
+        {
+          path: '/cuotisaving',
+          name: '历史记录，已保存的错题',
+          component: CuoTiSaving
         },
       ]
     }

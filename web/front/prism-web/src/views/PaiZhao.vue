@@ -4,11 +4,11 @@
       <a-page-header style="border: 1px solid rgb(235, 237, 240)" title="拍照翻译" sub-title="让我做你的眼睛" />
 
       <a-card>
-        <p style="text-align: center;font-size: large;font-weight: bold;">点击下方按钮即可拍照翻译</p>
-        <p style="text-align: center;">
-          <a-button type="primary" shape="circle" size="large" style="height: 120px;width: 120px;">
+        <p style="text-align: center; font-size: large; font-weight: bold">点击下方按钮即可拍照翻译</p>
+        <p style="text-align: center">
+          <a-button type="primary" shape="circle" size="large" style="height: 120px; width: 120px">
             <template #icon>
-              <CameraOutlined style="fontSize: 36px" />
+              <CameraOutlined style="fontsize: 36px" />
             </template>
           </a-button>
         </p>
@@ -29,16 +29,8 @@
         </a-collapse-panel>
       </a-collapse>
 
-      <a-card>
-        <p style="text-align: center;font-size: large;font-weight: bold;">历史记录</p>
-        <p style="text-align: center;">
-          <a-button type="primary" shape="circle" size="large" style="height: 120px;width: 120px;">
-            <template #icon>
-              <SaveOutlined style="fontSize: 36px" />
-            </template>
-          </a-button>
-        </p>
-      </a-card>
+      <TurnToHistoryPaiZhao />
+
     </a-space>
   </main>
 </template>
@@ -51,5 +43,5 @@ const wangyi = `has not finished`
 const deepl = `has not finished`
 const lixian = `has not finished`
 import { CameraOutlined } from '@ant-design/icons-vue'
-import { SaveOutlined } from '@ant-design/icons-vue'
+import TurnToHistoryPaiZhao from '../components/TurnToHistoryPaiZhao.vue'
 </script>
