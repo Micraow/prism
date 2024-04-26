@@ -54,12 +54,12 @@ const router = createRouter({
         },
         {
           path: '/historypaizhao',
-          name: '网络连接',
+          name: '拍照翻译历史',
           component: HistoryPaiZhao
         },
         {
           path: '/cuotisaving',
-          name: '网络连接',
+          name: '历史记录，已保存的错题',
           component: CuoTiSaving
         },
       ]

@@ -31,16 +31,6 @@
 
       <TurnToHistoryPaiZhao />
 
-      <a-card>
-        <p style="text-align: center;font-size: large;font-weight: bold;">历史记录</p>
-        <p style="text-align: center;">
-          <a-button type="primary" shape="circle" size="large" style="height: 120px;width: 120px;">
-            <template #icon>
-              <SaveOutlined style="fontSize: 36px" />
-            </template>
-          </a-button>
-        </p>
-      </a-card>
     </a-space>
   </main>
 </template>
@@ -52,6 +42,6 @@ const bing = `has not finished`;
 const wangyi = `has not finished`
 const deepl = `has not finished`
 const lixian = `has not finished`
-import { SaveOutlined } from '@ant-design/icons-vue'
+import { CameraOutlined } from '@ant-design/icons-vue'
 import TurnToHistoryPaiZhao from '../components/TurnToHistoryPaiZhao.vue'
 </script>
