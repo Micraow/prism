@@ -4,13 +4,19 @@ import cv2
 import os
 import enhancer
 
+def get_index(dir="/home/prism"):
+    file_list = os.listdir(dir) # 按字典顺序从小到大排的
+    for i in file_list.reverse():
+        if i[-4:] == ".jpg":
+            index = i[:-4]
+    return index + 1
 
 class cv():
     def __init__(self):
         if os.path.exists("/tmp/prism") is not True:
             os.mkdir("/tmp/prism")
         self.cap = cv2.VideoCapture(0)  # 参数为0时调用本地摄像头；参数为1时调用外接摄像头
-        self.index = 0
+        self.index = get_index()
         self.stitcher = cv2.Stitcher.create(cv2.Stitcher_PANORAMA)
         # print("初始化的工作（如果有）")
 
