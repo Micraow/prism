@@ -4,6 +4,7 @@ import router from './router'
 const app = createApp(App)
 import {
   Divider,
+  Flex,
   Layout,
   Menu,
   PageHeader,
@@ -11,10 +12,12 @@ import {
   Button,
   List,
   Collapse,
-  Space
+  Space,
+  Avatar
 } from 'ant-design-vue'
 
 app.use(Divider)
+app.use(Flex)
 app.use(Layout)
 app.use(Menu)
 app.use(PageHeader)
@@ -23,6 +26,7 @@ app.use(Button)
 app.use(List)
 app.use(Collapse)
 app.use(Space)
+app.use(Avatar)
 app.config.productionTip = false
 
 app.use(router)
