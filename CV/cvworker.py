@@ -4,7 +4,11 @@ import cv2
 import os
 import enhancer
 
-def get_index(dir="/home/prism"):
+current_file_dir = os.path.dirname(__file__)
+root = os.path.abspath(os.path.join(current_file_dir, ".."))
+gallery_dir = os.path.join(root,"/web/front/prism-web/src/assets/gallery/")
+
+def get_index(dir=gallery_dir):
     file_list = os.listdir(dir) # 按字典顺序从小到大排的
     for i in file_list.reverse():
         if i[-4:] == ".jpg":
@@ -70,7 +74,7 @@ class cv():
                 os.remove(f_path)
 
     def save(self, img):
-        path = "/home/prism/"+str(self.index)+".jpg"
+        path = gallery_dir + str(self.index) + ".jpg"
         cv2.imwrite(path, img)
-        self.index = self.index+1
+        self.index = self.index + 1
         return path

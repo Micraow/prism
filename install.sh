@@ -56,8 +56,7 @@ pip install "paddleocr>=2.0.1"
 pip install -r requirements.txt
 curl -o model.temp https://alist.pengs.top/d/64816595359b1e5db47f442f901a98ce4efd8481/alist/models/Helsinki-NLP/opus-mt-en-zh/pytorch_model.bin
 mv model.temp translate/hf_model/pytorch_model.bin
-mkdir -p /home/prism
-touch /home/prism/NoIrrelevantFilesHere
+
 
 cat <<'END'
 
