@@ -4,7 +4,7 @@ url = 'https://cn.bing.com/dict/search?mkt=en-us&q='
 
 
 def explain(inputs):
-    res = requests.get(url+input).text
+    res = requests.get(url+inputs).text
     r = re.compile(r"<meta name=\"description\" content=\"必应词典为您提供(.*?)\" \/>")
     res = re.findall(r, res)
     return res[0]
