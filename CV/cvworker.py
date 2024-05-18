@@ -78,3 +78,13 @@ class cv():
         cv2.imwrite(path, img)
         self.index = self.index + 1
         return path
+
+if __name__ == "__main__":
+        # 用于测试全景拼接的代码
+    img_paths = ["/home/micraow/Documents/debugfield/prism/A5F7EDA1F22A754F29F38B2AD7C9DF14.jpg","/home/micraow/Documents/debugfield/prism/5D76EFC9BDB087D1DE422D6F417B5A35.jpg","/home/micraow/Documents/debugfield/prism/79EE11D812A5991CCAB3A6BEBF20640D.jpg"] # 替换成你想要用来拼接的图片，有序
+    imgs=[]
+    for path in img_paths:
+        imgs.append(cv2.imread(path))
+    stitcher = cv2.Stitcher.create(cv2.Stitcher_PANORAMA)
+    (ret, pano) = stitcher.stitch(imgs)
+    cv2.imwrite("/home/micraow/Pictures/result3.jpg",pano) # 自行改变保存位置

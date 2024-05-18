@@ -196,3 +196,7 @@ def enhance(image_path):
 
     # 返回增强后的图像
     return final_result
+
+if __name__ == "__main__":
+    img = "/tmp/to_be_processed.jpg" # 原图
+    cv2.imwrite("/tmp/result.jpg",enhance(img)) # 保存增强处理后的图片
