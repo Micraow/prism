@@ -32,7 +32,7 @@ def translate(inputs):
     except:
         return "too many requests"
 
-# print(translate("I love prism"))
+print(translate("I love prism"))
 
 
 def getName():

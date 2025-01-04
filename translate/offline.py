@@ -27,7 +27,7 @@ def downlad(path):
                 if chunk:
                     f.write(chunk)
 
-    url = "https://alist.pengs.top/d/64816595359b1e5db47f442f901a98ce4efd8481/alist/models/Helsinki-NLP/opus-mt-en-zh/pytorch_model.bin"
+    url = "https://hf-mirror.com/Helsinki-NLP/opus-mt-en-zh/resolve/main/pytorch_model.bin?download=true"
     res = requests.get(url)
     filesize = int(res.headers['Content-Length'])
     divisional_ranges = calc_divisional_range(filesize)
