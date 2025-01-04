@@ -26,6 +26,7 @@
 ![PaddleOCR](https://img.shields.io/badge/PaddleOCR-%230062B0?style=for-the-badge&logo=paddlepaddle&logoColor=%23FFFFFF)
 ![VScode](https://img.shields.io/badge/VScode-%23007ACC?style=for-the-badge&logo=visualstudiocode&logoColor=%23FFFFFF)
 ![git](https://img.shields.io/badge/git-%23F05032?style=for-the-badge&logo=git&logoColor=%23FFFFFF)
+![Anaconda](https://img.shields.io/badge/Anaconda-%44A833?style=for-the-badge&logo=anaconda&logoColor=%23FFFFFF)
 
 ![JLHS](https://img.shields.io/badge/Developed_in-JLHS-blue?style=for-the-badge&logo=educative)
 ![love](https://img.shields.io/badge/Made_with-love-red?style=for-the-badge&logo=heart)

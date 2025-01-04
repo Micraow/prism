@@ -4,7 +4,7 @@ import requests
 from transformers import pipeline, AutoModelForSeq2SeqLM, AutoTokenizer
 
 
-def downlad(path):
+def download(path):
     def calc_divisional_range(filesize, chuck=8):
         step = filesize//chuck
         arr = list(range(0, filesize, step))
@@ -44,7 +44,7 @@ def downlad(path):
     # 等待所有任务执行完毕
         as_completed(futures)
 
-    return downlad(path)
+    return download(path)
 
 
 def translate(inputs):
@@ -54,7 +54,7 @@ def translate(inputs):
 
         # print(current_work_dir)
         print("downloading offline translate model...")
-        downlad(current_work_dir+"/hf_model/pytorch_model.bin")
+        download(current_work_dir+"/hf_model/pytorch_model.bin")
     model = AutoModelForSeq2SeqLM.from_pretrained(current_work_dir+"/hf_model")
     local_files_only = True
     tokenizer = AutoTokenizer.from_pretrained(current_work_dir+"/hf_model")
@@ -62,9 +62,14 @@ def translate(inputs):
                            model=model, tokenizer=tokenizer)
 
     text = input
+    model = AutoModelForSeq2SeqLM.from_pretrained(current_work_dir+"/hf_model", local_files_only=True)
+    tokenizer = AutoTokenizer.from_pretrained(current_work_dir+"/hf_model", local_files_only=True)
+    translation = pipeline("translation_en_to_zh", model=model, tokenizer=tokenizer)
+    text = inputs
     translated_text = translation(text, max_length=40)[0]['translation_text']
     return translated_text
 
-
 def getName():
     return "离线翻译"
+
+print(translate("I love prism, which is a personal English assistant."))
