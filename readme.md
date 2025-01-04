@@ -30,6 +30,8 @@
 ![JLHS](https://img.shields.io/badge/Developed_in-JLHS-blue?style=for-the-badge&logo=educative)
 ![love](https://img.shields.io/badge/Made_with-love-red?style=for-the-badge&logo=heart)
 
+** 彭勃（micraow）正在[web分支](https://github.com/Micraow/prism/tree/web)上继续本项目 **
+
 Prism 是 南京市金陵中学学生研究性学习 项目，本项目的目标是完成课题： 基于计算机视觉与深度学习技术的学习辅助软件的设计与开发 。
 
 我们的项目涉及计算机视觉，深度学习，应用开发，linux，电子电路等多个方面的知识，预期在1年内完成。
