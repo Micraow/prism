@@ -70,14 +70,15 @@ def call_live_translate():
     global res
     global is_live_translate_running
     res = Backend.liveTranslate()
-    db = get_db()
-    try:
-        # 将实时翻译结果保存到数据库
-        db.execute("INSERT INTO PRISM (ID, TYPE, ORI, RES) VALUES (?, ?, ?, ?)", 
-                   [now_ID, "LIVE", res.get("origin"), str(res)])
-        db.commit()
-    except Exception as e:
-        print(f"Error saving live translation: {e}")
+    with app.app_context():
+        db = get_db()
+        try:
+            # 将实时翻译结果保存到数据库
+            db.execute("INSERT INTO PRISM (ID, TYPE, ORI, RES) VALUES (?, ?, ?, ?)", 
+                       [now_ID, "LIVE", res.get("origin"), str(res)])
+            db.commit()
+        except Exception as e:
+            print(f"Error saving live translation: {e}")
     is_live_translate_running = False  # 实时翻译结束后，重置标志位
     
 @app.route('/livetranslate/end', methods=['GET'])

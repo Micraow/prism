@@ -118,9 +118,7 @@ class Translator:
             return results
 
     def liveTranslate(self, var=None):
-        back = Thread(target=self._liveTranslate,args=(var,))
-        back.start()
-        back.join()
+        self._liveTranslate()
         res = self.result
         return res
 
