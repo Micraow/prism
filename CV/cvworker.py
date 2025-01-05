@@ -28,6 +28,8 @@ class cv():
 
     def takePic(self):
         self.cap = cv2.VideoCapture(0)  # 参数为0时调用本地摄像头；参数为1时调用外接摄像头
+        self.cap.release()  # workaround for cv2.VideoCapture(0) not working after first call
+        self.cap = cv2.VideoCapture(0)
         ret, frame = self.cap.read()  # ret(bool)有无读取到图片
         cv2.imwrite("/tmp/prism/"+str(self.index)+".jpg", frame)
         path = "/tmp/prism/"+str(self.index)+".jpg"

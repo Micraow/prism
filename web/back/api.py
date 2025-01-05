@@ -41,17 +41,6 @@ def connect_wifi():
 def getNetworkstatus():
     return jsonify({"Result": network.getNetworkstatus()})
 
-def call_live_translate():
-    global now_ID
-    global res
-    global is_live_translate_running
-    res = Backend.liveTranslate()
-    db = get_db()
-    new_res = {key: value for key, value in res.items() if key != "origin"}
-    db.execute("INSERT INTO PRISM (ID, origin, translation) VALUES (?, ?, ?)", [now_ID, res["origin"], str(new_res)])
-    db.commit()
-    is_live_translate_running = False  # 实时翻译结束后，重置标志位
-
 @app.route('/livetranslate/start', methods=['GET'])
 def start_livetranslate():
     global now_ID
@@ -76,6 +65,21 @@ def start_livetranslate():
     t.start()
     return jsonify({"Result": "Success", "Ticket": now_ID})
 
+def call_live_translate():
+    global now_ID
+    global res
+    global is_live_translate_running
+    res = Backend.liveTranslate()
+    db = get_db()
+    try:
+        # 将实时翻译结果保存到数据库
+        db.execute("INSERT INTO PRISM (ID, TYPE, ORI, RES) VALUES (?, ?, ?, ?)", 
+                   [now_ID, "LIVE", res.get("origin"), str(res)])
+        db.commit()
+    except Exception as e:
+        print(f"Error saving live translation: {e}")
+    is_live_translate_running = False  # 实时翻译结束后，重置标志位
+    
 @app.route('/livetranslate/end', methods=['GET'])
 def end_livetranslate():
     global now_ID
@@ -105,12 +109,38 @@ def translate_text():
 @app.route('/translate/photo', methods=['GET'])
 def translate_photo():
     result = Backend.photoTranslate()
-    return jsonify(result)
+    db = get_db()
+    try:
+        # 获取当前最大ID并加1
+        max_id = db.execute("SELECT MAX(ID) FROM PRISM").fetchone()[0]
+        new_id = 1 if max_id is None else max_id + 1
+        
+        # 将拍照翻译结果保存到数据库
+        db.execute("INSERT INTO PRISM (ID, TYPE, ORI, RES) VALUES (?, ?, ?, ?)", 
+                   [new_id, "PIC", result.get("origin"), str(result)])
+        db.commit()
+        return jsonify(result)
+    except Exception as e:
+        print(f"Error saving photo translation: {e}")
+        return jsonify({"Result": "Error", "Message": str(e)})
 
 @app.route('/enhance', methods=['GET'])
 def enhance_image():
     result = Backend.enhancer()
-    return jsonify({"result": result})
+    db = get_db()
+    try:
+        # 获取当前最大ID并加1
+        max_id = db.execute("SELECT MAX(ID) FROM PRISM").fetchone()[0]
+        new_id = 1 if max_id is None else max_id + 1
+        
+        # 将错题图片路径保存到数据库
+        db.execute("INSERT INTO PRISM (ID, TYPE, PATH) VALUES (?, ?, ?)", 
+                   [new_id, "CUOTI", result])
+        db.commit()
+        return jsonify({"result": result})
+    except Exception as e:
+        print(f"Error saving enhanced image: {e}")
+        return jsonify({"Result": "Error", "Message": str(e)})
 
 @app.route('/test',methods=['GET'])
 def test():
@@ -153,6 +183,6 @@ def get_cuo_ti_history():
         print(f"Error fetching Cuo Ti history: {e}")
         return jsonify({"Result": "Error", "Message": str(e)})
     
-    
+
 if __name__ == '__main__':
     app.run(debug=True)
