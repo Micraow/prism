@@ -1,13 +1,8 @@
 import sqlite3
 from flask import g
 import os
-import api
-current_file_dir = os.path.dirname(__file__)
 
-DATABASE = current_file_dir + '/database.db'
-
-app = api.app
-
+DATABASE = os.path.join(os.path.dirname(__file__), 'database.db')
 
 def init_db(db):
     '''
@@ -38,7 +33,6 @@ def init_db(db):
         PATH           TEXT);''')
     return db
 
-
 def get_db():
     db = getattr(g, '_database', None)
 
@@ -48,15 +42,12 @@ def get_db():
 
     return db
 
-
 def query_db(query, args=(), one=False):
     cur = get_db().execute(query, args)
     rv = cur.fetchall()
     cur.close()
     return (rv[0] if rv else None) if one else rv
 
-
-@app.teardown_appcontext
 def close_connection(exception):
     db = getattr(g, '_database', None)
     if db is not None:

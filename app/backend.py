@@ -2,6 +2,7 @@ import sys
 import os
 current_file_dir = os.path.dirname(__file__)
 root = os.path.abspath(os.path.join(current_file_dir, ".."))
+sys.path.append(root)
 sys.path.append(root+"/CV")
 sys.path.append(root+"/rec")
 sys.path.append(root+"/translate")
@@ -10,7 +11,7 @@ sys.path.append(root+"/translate")
 
 from time import sleep
 from threading import Thread
-import network
+from . import network
 import cvworker
 import pocr.recognize as recognize
 import bing_dict
@@ -18,9 +19,12 @@ import bing
 import deepl
 import offline
 import youdao
-import google
+import google_translate
 
-mainland = google.test_in_mainland_china()
+if network.getNetworkstatus() == False:
+    mainland = True
+else:
+    mainland = google_translate.test_in_mainland_china()
 
 class Translator:
     def __init__(self, mode=0):
@@ -54,7 +58,7 @@ class Translator:
             "deepl":deepl,
             "youdao":youdao,
             "offline":offline,
-            "google":google,
+            "google":google_translate,
         }
 
         provider=match_table.get(provider)
@@ -79,7 +83,7 @@ class Translator:
         result["origin"] = content
         if network.getNetworkstatus() is True:
             if content.isalpha() is not True:
-                backends = [bing, deepl, youdao, offline] if mainland else [bing, deepl, youdao, offline, google]
+                backends = [bing, deepl, youdao, offline] if mainland else [bing, deepl, youdao, offline, google_translate]
                 for backend in backends:
                     t = Thread(target=self.call_backend,
                                args=(content, backend, result))
@@ -159,3 +163,6 @@ class Translator:
                 return "失败"
             else:
                 return None
+
+    def test_pic(self):
+        return self.worker.takePic()

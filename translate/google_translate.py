@@ -2,8 +2,8 @@ import requests
 
 def test_in_mainland_china():
     try:
-        # 尝试连接 Google，设置超时时间为 5 秒
-        response = requests.get("https://www.google.com", timeout=5)
+        # 尝试连接 Google，设置超时时间为 3 秒
+        response = requests.get("https://www.google.com", timeout=3)
         # 如果连接成功，返回 False（不在中国大陆）
         return False
     except requests.exceptions.Timeout:

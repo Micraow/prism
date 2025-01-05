@@ -175,3 +175,4 @@ coverage
 
 *.tsbuildinfo
 vue-project
+database.db

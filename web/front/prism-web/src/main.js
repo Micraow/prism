@@ -13,7 +13,10 @@ import {
   List,
   Collapse,
   Space,
-  Avatar
+  Avatar,
+  Modal,
+  Input,
+  message
 } from 'ant-design-vue'
 
 app.use(Divider)
@@ -27,7 +30,11 @@ app.use(List)
 app.use(Collapse)
 app.use(Space)
 app.use(Avatar)
+app.use(Modal);
+app.use(Input);
 app.config.productionTip = false
+
+app.config.globalProperties.$message = message
 
 app.use(router)
 

@@ -1,16 +1,18 @@
 from flask import Flask, request, jsonify
 import sys
 import os
-import sqlite  # 不是python内置的sqlite3
+from sqlite import get_db, query_db, close_connection  # 从sqlite.py导入必要的函数
 from threading import Thread
 
 current_file_dir = os.path.dirname(__file__)
 root = os.path.abspath(os.path.join(current_file_dir, "../.."))
 sys.path.append(root)
-# print(sys.path)
 from app import network, backend  # 勿格式化文档！！此行必须在此位置否则导入失败！！
 
 app = Flask(__name__)
+
+# 在app上下文中注册关闭连接的回调
+app.teardown_appcontext(close_connection)
 
 now_ID = 0
 Backend = backend.Translator(mode=1)  # mode=1 用于web端
@@ -44,7 +46,7 @@ def call_live_translate():
     global res
     global is_live_translate_running
     res = Backend.liveTranslate()
-    db = sqlite.get_db()
+    db = get_db()
     new_res = {key: value for key, value in res.items() if key != "origin"}
     db.execute("INSERT INTO PRISM (ID, origin, translation) VALUES (?, ?, ?)", [now_ID, res["origin"], str(new_res)])
     db.commit()
@@ -60,7 +62,7 @@ def start_livetranslate():
 
     try:
         # 从数据库中获取最大的ID并加1
-        max_id = sqlite.query_db("SELECT MAX(ID) FROM PRISM", one=True)
+        max_id = query_db("SELECT MAX(ID) FROM PRISM", one=True)
         if max_id and max_id[0] is not None:
             now_ID = max_id[0] + 1
         else:
@@ -110,5 +112,47 @@ def enhance_image():
     result = Backend.enhancer()
     return jsonify({"result": result})
 
+@app.route('/test',methods=['GET'])
+def test():
+    path = Backend.test_pic()
+    return path
+
+@app.route('/history/pai_zhao', methods=['GET'])
+def get_pai_zhao_history():
+    db = get_db()
+    try:
+        results = db.execute("SELECT * FROM PRISM WHERE TYPE = 'PIC' ORDER BY ID DESC").fetchall()
+        history = []
+        for row in results:
+            history.append({
+                "id": row[0],
+                "type": row[1],
+                "original_text": row[2],
+                "translation": row[3],
+                "path": row[4]
+            })
+        return jsonify(history)
+    except Exception as e:
+        print(f"Error fetching Pai Zhao history: {e}")
+        return jsonify({"Result": "Error", "Message": str(e)})
+
+@app.route('/history/cuo_ti', methods=['GET'])
+def get_cuo_ti_history():
+    db = get_db()
+    try:
+        results = db.execute("SELECT * FROM PRISM WHERE TYPE = 'CUOTI' ORDER BY ID DESC").fetchall()
+        history = []
+        for row in results:
+            history.append({
+                "id": row[0],
+                "type": row[1],
+                "path": row[4]
+            })
+        return jsonify(history)
+    except Exception as e:
+        print(f"Error fetching Cuo Ti history: {e}")
+        return jsonify({"Result": "Error", "Message": str(e)})
+    
+    
 if __name__ == '__main__':
     app.run(debug=True)

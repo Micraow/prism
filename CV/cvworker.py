@@ -6,25 +6,28 @@ import enhancer
 
 current_file_dir = os.path.dirname(__file__)
 root = os.path.abspath(os.path.join(current_file_dir, ".."))
-gallery_dir = os.path.join(root,"/web/front/prism-web/src/assets/gallery/")
+gallery_dir = os.path.join(root,"web/front/prism-web/src/assets/gallery/")
 
 def get_index(dir=gallery_dir):
     file_list = os.listdir(dir) # 按字典顺序从小到大排的
-    for i in file_list.reverse():
-        if i[-4:] == ".jpg":
-            index = i[:-4]
-    return index + 1
+    try:
+        for i in file_list.reverse():
+            if i[-4:] == ".jpg":
+                index = i[:-4]
+        return index + 1
+    except:
+        return 0
 
 class cv():
     def __init__(self):
         if os.path.exists("/tmp/prism") is not True:
-            os.mkdir("/tmp/prism")
-        self.cap = cv2.VideoCapture(0)  # 参数为0时调用本地摄像头；参数为1时调用外接摄像头
+            os.mkdir("/tmp/prism")       
         self.index = get_index()
         self.stitcher = cv2.Stitcher.create(cv2.Stitcher_PANORAMA)
         # print("初始化的工作（如果有）")
 
     def takePic(self):
+        self.cap = cv2.VideoCapture(0)  # 参数为0时调用本地摄像头；参数为1时调用外接摄像头
         ret, frame = self.cap.read()  # ret(bool)有无读取到图片
         cv2.imwrite("/tmp/prism/"+str(self.index)+".jpg", frame)
         path = "/tmp/prism/"+str(self.index)+".jpg"
