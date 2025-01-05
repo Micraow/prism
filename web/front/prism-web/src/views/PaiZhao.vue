@@ -6,7 +6,7 @@
       <a-card>
         <p style="text-align: center; font-size: large; font-weight: bold">点击下方按钮即可拍照翻译</p>
         <p style="text-align: center">
-          <a-button type="primary" shape="circle" size="large" style="height: 120px; width: 120px">
+          <a-button type="primary" shape="circle" size="large" style="height: 120px; width: 120px" @click="captureAndTranslate">
             <template #icon>
               <CameraOutlined style="fontsize: 36px" />
             </template>
@@ -35,13 +35,26 @@
   </main>
 </template>
 
-<script lang="ts" setup>
+<script setup>
 import { ref } from 'vue';
+import { CameraOutlined } from '@ant-design/icons-vue';
+import TurnToHistoryPaiZhao from '../components/TurnToHistoryPaiZhao.vue';
+
 const activeKey = ref(['1', '2', '3', '4']);
-const bing = `has not finished`;
-const wangyi = `has not finished`
-const deepl = `has not finished`
-const lixian = `has not finished`
-import { CameraOutlined } from '@ant-design/icons-vue'
-import TurnToHistoryPaiZhao from '../components/TurnToHistoryPaiZhao.vue'
+const bing = ref('has not finished');
+const wangyi = ref('has not finished');
+const deepl = ref('has not finished');
+const lixian = ref('has not finished');
+
+const captureAndTranslate = () => {
+  fetch('/translate/photo')
+    .then(response => response.json())
+    .then(data => {
+      bing.value = data.bing || 'No result';
+      wangyi.value = data.youdao || 'No result';
+      deepl.value = data.deepl || 'No result';
+      lixian.value = data.offline || 'No result';
+    })
+    .catch(error => console.error('Error:', error));
+};
 </script>
