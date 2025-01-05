@@ -48,6 +48,7 @@ pip install paddleocr
 curl -o model.temp https://hf-mirror.com/Helsinki-NLP/opus-mt-en-zh/resolve/main/pytorch_model.bin?download=true
 mv model.temp translate/hf_model/pytorch_model.bin
 
+cd web/front/prism-web && npm install && cd -
 
 cat <<'END'
 

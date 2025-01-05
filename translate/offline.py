@@ -20,12 +20,17 @@ def download(path):
 
     def range_download(save_name, s_pos, e_pos):
         headers = {"Range": f"bytes={s_pos}-{e_pos}"}
-        res = requests.get(url, headers=headers, stream=True)
-        with open(save_name, "rb+") as f:
-            f.seek(s_pos)
-            for chunk in res.iter_content(chunk_size=64*1024):
-                if chunk:
-                    f.write(chunk)
+        try:
+            res = requests.get(url, headers=headers, stream=True)
+            res.raise_for_status()  # 检查请求是否成功
+            with open(save_name, "rb+") as f:
+                f.seek(s_pos)
+                for chunk in res.iter_content(chunk_size=64*1024):
+                    if chunk:
+                        f.write(chunk)
+        except requests.exceptions.RequestException as e:
+            print(f"下载失败: {e}")
+            raise
 
     url = "https://hf-mirror.com/Helsinki-NLP/opus-mt-en-zh/resolve/main/pytorch_model.bin?download=true"
     res = requests.get(url)
@@ -44,7 +49,7 @@ def download(path):
     # 等待所有任务执行完毕
         as_completed(futures)
 
-    return download(path)
+    return save_name
 
 
 def translate(inputs):
@@ -60,11 +65,6 @@ def translate(inputs):
     tokenizer = AutoTokenizer.from_pretrained(current_work_dir+"/hf_model")
     translation = pipeline("translation_en_to_zh",
                            model=model, tokenizer=tokenizer)
-
-    text = input
-    model = AutoModelForSeq2SeqLM.from_pretrained(current_work_dir+"/hf_model", local_files_only=True)
-    tokenizer = AutoTokenizer.from_pretrained(current_work_dir+"/hf_model", local_files_only=True)
-    translation = pipeline("translation_en_to_zh", model=model, tokenizer=tokenizer)
     text = inputs
     translated_text = translation(text, max_length=40)[0]['translation_text']
     return translated_text
