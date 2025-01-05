@@ -106,7 +106,7 @@ def translate(inputs):
 
 
 if __name__ == "__main__":
-    # print(translate("I love prism"))
+    print(translate("I love prism"))
     main()
 
 

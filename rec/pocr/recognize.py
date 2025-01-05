@@ -46,4 +46,6 @@ class img2txt():
         return loc_res  # 返回定位结果
 
 # 示例代码
-# print(locate('rec/paddleocr/img/test.png'))
+if __name__ == "__main__":
+    p = img2txt()
+    print(p.rec('rec/pocr/img/test.png'))

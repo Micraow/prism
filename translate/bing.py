@@ -41,7 +41,8 @@ def translate(inputs):
     res = res[0]["translations"][0]["text"]
     return res
 
-print(translate("I love prism."))
+if __name__ == "__main__":
+    print(translate("I love prism."))
 
 def getName():
     return "bing"

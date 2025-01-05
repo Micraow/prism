@@ -32,7 +32,8 @@ def translate(inputs):
     except:
         return "too many requests"
 
-print(translate("I love prism"))
+if __name__ == "__main__":
+    print(translate("I love prism"))
 
 
 def getName():

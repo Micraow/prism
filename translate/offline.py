@@ -72,4 +72,5 @@ def translate(inputs):
 def getName():
     return "离线翻译"
 
-print(translate("I love prism, which is a personal English assistant."))
+if __name__ == "__main__":
+    print(translate("I love prism, which is a personal English assistant."))
